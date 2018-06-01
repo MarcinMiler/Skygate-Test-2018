@@ -1,10 +1,14 @@
 import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Home from './Views/Home'
+import Navbar from './Components/Navbar'
 
 const Routes = () => (
     <BrowserRouter>
-        <Route path="/" component={Home} />
+        <div>
+            <Navbar />
+            <Route path="/" component={Home} />
+        </div>
     </BrowserRouter>
 )
 
