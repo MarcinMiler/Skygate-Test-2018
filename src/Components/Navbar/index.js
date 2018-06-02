@@ -1,12 +1,14 @@
 import React from 'react'
-import { Container, Logo, Left, Right, Button, NavItem, Wrap } from './style'
+import { Container, Logo, NavItem, Wrap } from './style'
+import { PrimaryButton } from '../Buttons'
 
 const Navbar = () => (
     <Container>
         <Logo>Evently</Logo>
         <Wrap>
             <NavItem>Explore Events</NavItem>
-            <Button>Create Event</Button>
+
+            <PrimaryButton width="200px">Create Event</PrimaryButton>
         </Wrap>
     </Container>
 )
