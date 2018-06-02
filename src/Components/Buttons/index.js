@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
 export const PrimaryButton = styled.div.attrs({
-    width: props => props.width || '150px'
+    width: props => props.width || '150px',
+    height: props => props.height || '100%'
 })`
     width: ${props => props.width};
-    height: 100%;
+    height: ${props => props.height};
     display: flex;
     flex-direction: column;
     justify-content: center;
