@@ -7,7 +7,7 @@ const AddEventForm = () => (
     <AddEventFormWrapper>
         <Input name="Title" />
 
-        <Input name="Description" />
+        <Input name="Description" textArea />
     </AddEventFormWrapper>
 )
 
