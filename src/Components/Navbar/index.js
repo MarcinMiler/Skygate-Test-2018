@@ -1,14 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Container, Logo, NavItem, Wrap } from './style'
 import { PrimaryButton } from '../Buttons'
 
 const Navbar = () => (
     <Container>
-        <Logo>Evently</Logo>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+            <Logo>Evently</Logo>
+        </Link>
         <Wrap>
             <NavItem>Explore Events</NavItem>
 
-            <PrimaryButton width="200px">Create Event</PrimaryButton>
+            <Link to="/addEvent" style={{ textDecoration: 'none' }}>
+                <PrimaryButton width="200px">Create Event</PrimaryButton>
+            </Link>
         </Wrap>
     </Container>
 )

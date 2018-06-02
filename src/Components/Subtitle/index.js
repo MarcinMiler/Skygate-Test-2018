@@ -5,7 +5,7 @@ const Subtitle = styled.div`
     padding-bottom: 30px;
     font-weight: 400;
     font-size: 28px;
-    text-align: center;
+    text-align: ${props => (props.left ? 'left' : 'center')};
     color: #f50057;
 `
 
