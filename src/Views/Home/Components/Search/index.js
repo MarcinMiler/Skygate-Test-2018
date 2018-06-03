@@ -1,13 +1,14 @@
 import React from 'react'
-import { Wrapper } from './style'
+
+import { Wrapper, SearchIcon } from './style'
 import Title from '../../../../Components/Title'
-import Input from '../Input'
+import { InputWithIcon } from '../../../../Components/Inputs'
 
 const Search = () => (
     <Wrapper>
         <Title>Find your next experience</Title>
 
-        <Input placeholder="Search for event" />
+        <InputWithIcon placeholder="Search for events..." Icon={SearchIcon} />
     </Wrapper>
 )
 

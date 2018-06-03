@@ -8,8 +8,11 @@ const Navbar = () => (
         <Link to="/" style={{ textDecoration: 'none' }}>
             <Logo>Evently</Logo>
         </Link>
+
         <Wrap>
-            <NavItem>Explore Events</NavItem>
+            <Link to="/expolreEvents" style={{ textDecoration: 'none' }}>
+                <NavItem>Explore Events</NavItem>
+            </Link>
 
             <Link to="/addEvent" style={{ textDecoration: 'none' }}>
                 <PrimaryButton width="200px">Create Event</PrimaryButton>

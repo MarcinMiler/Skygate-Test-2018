@@ -7,7 +7,7 @@ const Cards = () => (
     <Wrapper>
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(i => <Card />)}
         <Center>
-            <PrimaryButton height="55px" borderRadius>
+            <PrimaryButton height="55px" borderRadius shadow>
                 See more
             </PrimaryButton>
         </Center>

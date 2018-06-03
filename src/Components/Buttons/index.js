@@ -11,6 +11,7 @@ export const PrimaryButton = styled.div.attrs({
     justify-content: center;
     align-content: center;
     background-color: #f50057;
+    box-shadow: ${props => (props.shadow ? '0px 0px 15px #aaaaaa' : 'none')};
     border-radius: ${props => (props.borderRadius ? '4px' : '0')};
     color: white;
     text-align: center;

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import MDSearch from 'react-icons/lib/md/search'
 
 export const Wrapper = styled.div`
     width: 100%;
@@ -10,4 +11,8 @@ export const Wrapper = styled.div`
     justify-content: center;
     background-color: white;
     box-shadow: 0px 0px 25px #888888;
+`
+export const SearchIcon = styled(MDSearch)`
+    font-size: 32px;
+    color: gray;
 `

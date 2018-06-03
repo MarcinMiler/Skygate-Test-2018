@@ -22,6 +22,7 @@ export const Logo = styled.h2`
     color: #f50057;
 `
 export const NavItem = styled.div`
+    height: 100%;
     margin-right: 20px;
     display: flex;
     flex-direction: column;

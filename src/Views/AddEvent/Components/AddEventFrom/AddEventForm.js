@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { AddEventFormWrapper, InputRow, WrapButton } from './style'
-import Input from '../../../../Components/Input'
+import { InputWithLabel } from '../../../../Components/Inputs'
 import Dropdown from '../../../../Components/Dropdown'
 import { PrimaryButton } from '../../../../Components/Buttons'
 
@@ -9,11 +9,11 @@ const options = ['Music', 'Networking', 'Food', 'Sport', 'Parties']
 
 const AddEventForm = () => (
     <AddEventFormWrapper>
-        <Input name="Title" onChange={val => console.log(val)} />
+        <InputWithLabel label="Title" onChange={val => console.log(val)} />
 
-        <Input name="Description" textArea />
+        <InputWithLabel label="Description" textArea />
 
-        <Input name="Name of the organizer" />
+        <InputWithLabel label="Name of the organizer" />
 
         <Dropdown
             name="Select category"
@@ -22,19 +22,19 @@ const AddEventForm = () => (
         />
 
         <InputRow>
-            <Input name="Start date" type="date" autoWidth />
-            <Input name="Start time" type="time" autoWidth />
+            <InputWithLabel label="Start date" type="date" autoWidth />
+            <InputWithLabel label="Start time" type="time" autoWidth />
 
-            <Input name="End date" type="date" autoWidth />
-            <Input name="End time" type="time" autoWidth />
+            <InputWithLabel label="End date" type="date" autoWidth />
+            <InputWithLabel label="End time" type="time" autoWidth />
         </InputRow>
 
-        <Input name="Localization" />
+        <InputWithLabel label="Localization" />
 
-        <Input name="Photo (url)" />
+        <InputWithLabel label="Photo (url)" />
 
         <WrapButton>
-            <PrimaryButton height="55px" borderRadius>
+            <PrimaryButton height="55px" borderRadius shadow>
                 Create event
             </PrimaryButton>
         </WrapButton>
