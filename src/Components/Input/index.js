@@ -1,14 +1,8 @@
 import React from 'react'
-import {
-    InputWrapper,
-    StyledInput,
-    InputContainer,
-    Label,
-    StyledTextArea
-} from './style'
+import { Label, InputContainer, StyledTextArea, StyledInput } from './style'
 
-const Input = ({ name, onChange, textArea }) => (
-    <React.Fragment>
+const Input = ({ name, onChange, textArea, type, autoWidth }) => (
+    <div>
         <Label>{name}</Label>
 
         <InputContainer>
@@ -18,11 +12,13 @@ const Input = ({ name, onChange, textArea }) => (
                 />
             ) : (
                 <StyledInput
+                    autoWidth={autoWidth}
+                    type={type}
                     onChange={e => (onChange ? onChange(e.target.value) : null)}
                 />
             )}
         </InputContainer>
-    </React.Fragment>
+    </div>
 )
 
 export default Input
