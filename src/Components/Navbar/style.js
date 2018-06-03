@@ -12,6 +12,7 @@ export const Container = styled.div`
     align-content: center;
     background-color: white;
     box-shadow: 0 0 15px #888888;
+    z-index: 1000;
 `
 export const Wrap = styled.div`
     display: flex;

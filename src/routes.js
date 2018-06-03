@@ -13,7 +13,7 @@ const Routes = () => (
 
             <Route exact path="/" component={Home} />
             <Route exact path="/addEvent" component={AddEvent} />
-            <Route exact path="/exploreEvents" component={ExploreEvents} />
+            <Route exact path="/expolreEvents" component={ExploreEvents} />
         </div>
     </BrowserRouter>
 )

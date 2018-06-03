@@ -7,6 +7,12 @@ export const Wrapper = styled.div`
     background-color: white;
     box-shadow: 0px 0px 15px #cccccc;
     cursor: pointer;
+    transition: all 300ms ease;
+
+    &:hover {
+        box-shadow: 0px 0px 65px #adadad;
+        transform: scale(1.01);
+    }
 `
 export const Image = styled.img`
     width: 100%;

@@ -25,4 +25,11 @@ export const Category = styled.div`
     font-weight: 400;
     color: white;
     cursor: pointer;
+
+    transition: all 300ms ease;
+
+    &:hover {
+        box-shadow: 0px 0px 100px #a3a3a3;
+        transform: scale(1.02);
+    }
 `

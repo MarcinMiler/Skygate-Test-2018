@@ -67,10 +67,13 @@ export const WrapIcon = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background-color: white;
     border-right: 1px solid #f2f1f6;
 `
 export const StyledInputWithIcon = styled.input`
-    height: 50px;
+    height: 55px;
     flex-grow: 1;
     padding: 0 20px 0 20px;
     border: none;

@@ -1,9 +1,14 @@
 import React from 'react'
-import { Container } from '../../Components/Navbar/style'
+
+import Container from '../../Components/Container'
+import Search from './Components/Search'
+import EventsList from './Components/EventsList'
 
 const ExploreEvents = () => (
     <Container>
-        <p>something</p>
+        <Search />
+
+        <EventsList />
     </Container>
 )
 
