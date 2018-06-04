@@ -49,7 +49,8 @@ export const EventDescription = styled.p`
     color: gray;
 `
 export const EventCategory = styled.p`
-    padding: 10px 20px 10px 20px;
+    margin: 0;
+    padding: 12px 0 12px 20px;
     color: gray;
     border-top: 1px solid lightgray;
 `
