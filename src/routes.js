@@ -5,6 +5,7 @@ import Home from './Views/Home'
 import Navbar from './Components/Navbar'
 import AddEvent from './Views/AddEvent'
 import ExploreEvents from './Views/ExploreEvents'
+import Event from './Views/Event'
 
 const ScrollToTop = () => {
     window.scrollTo(0, 0)
@@ -20,6 +21,7 @@ const Routes = () => (
                 <Route exact path="/" component={Home} />
                 <Route exact path="/addEvent" component={AddEvent} />
                 <Route exact path="/expolreEvents" component={ExploreEvents} />
+                <Route exact path="/event" component={Event} />
             </Switch>
         </div>
     </BrowserRouter>

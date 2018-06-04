@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {
     EventItemWrapper,
     EventImage,
@@ -10,22 +11,24 @@ import {
 } from './style'
 
 const EventItem = () => (
-    <EventItemWrapper>
-        <EventImage />
+    <Link to="/event" style={{ textDecoration: 'none' }}>
+        <EventItemWrapper>
+            <EventImage />
 
-        <EventContent>
-            <EventTitle>Color Festival</EventTitle>
+            <EventContent>
+                <EventTitle>Color Festival</EventTitle>
 
-            <EventDate>Mon, Apr 11, 2018</EventDate>
+                <EventDate>Mon, Apr 11, 2018</EventDate>
 
-            <EventDescription>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-                non condimentum dui, non semper ex.
-            </EventDescription>
+                <EventDescription>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean non condimentum dui, non semper ex.
+                </EventDescription>
 
-            <EventCategory>#IT</EventCategory>
-        </EventContent>
-    </EventItemWrapper>
+                <EventCategory>#IT</EventCategory>
+            </EventContent>
+        </EventItemWrapper>
+    </Link>
 )
 
 export default EventItem
