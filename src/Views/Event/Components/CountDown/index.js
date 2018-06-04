@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
     CountDownWrapper,
     CountDownItem,
@@ -6,28 +6,80 @@ import {
     CountDownText
 } from './style'
 
-const CountDown = () => (
-    <CountDownWrapper>
-        <CountDownItem>
-            <CountDownNumber>06</CountDownNumber>
-            <CountDownText>Days</CountDownText>
-        </CountDownItem>
+class CountDown extends Component {
+    state = {
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+    }
 
-        <CountDownItem>
-            <CountDownNumber>20</CountDownNumber>
-            <CountDownText>Hours</CountDownText>
-        </CountDownItem>
+    componentDidMount() {
+        this.interval = setInterval(this.calculateCountDown, 1000)
+    }
 
-        <CountDownItem>
-            <CountDownNumber>50</CountDownNumber>
-            <CountDownText>Minutes</CountDownText>
-        </CountDownItem>
+    componentWillUnmount() {
+        clearInterval(this.interval)
+    }
 
-        <CountDownItem>
-            <CountDownNumber>11</CountDownNumber>
-            <CountDownText>Seconds</CountDownText>
-        </CountDownItem>
-    </CountDownWrapper>
-)
+    calculateCountDown = () => {
+        const dateToCount = new Date('July 11, 2018 12:00:00').getTime()
+        const now = new Date().getTime()
+
+        const distance = dateToCount - now
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+        const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        )
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+        this.setState(() => ({
+            days,
+            hours,
+            minutes,
+            seconds
+        }))
+    }
+
+    addZeroBefore = value => (String(value).length < 2 ? '0' + value : value)
+
+    render() {
+        const { days, hours, minutes, seconds } = this.state
+
+        return (
+            <CountDownWrapper>
+                <CountDownItem>
+                    <CountDownNumber>
+                        {this.addZeroBefore(days)}
+                    </CountDownNumber>
+                    <CountDownText>Days</CountDownText>
+                </CountDownItem>
+
+                <CountDownItem>
+                    <CountDownNumber>
+                        {this.addZeroBefore(hours)}
+                    </CountDownNumber>
+                    <CountDownText>Hours</CountDownText>
+                </CountDownItem>
+
+                <CountDownItem>
+                    <CountDownNumber>
+                        {this.addZeroBefore(minutes)}
+                    </CountDownNumber>
+                    <CountDownText>Minutes</CountDownText>
+                </CountDownItem>
+
+                <CountDownItem>
+                    <CountDownNumber>
+                        {this.addZeroBefore(seconds)}
+                    </CountDownNumber>
+                    <CountDownText>Seconds</CountDownText>
+                </CountDownItem>
+            </CountDownWrapper>
+        )
+    }
+}
 
 export default CountDown
