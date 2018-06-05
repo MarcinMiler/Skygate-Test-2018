@@ -10,22 +10,19 @@ import {
     EventCategory
 } from './style'
 
-const EventItem = () => (
+const EventItem = ({ event: { title, description, startDate, category } }) => (
     <Link to="/event" style={{ textDecoration: 'none' }}>
         <EventItemWrapper>
             <EventImage />
 
             <EventContent>
-                <EventTitle>Color Festival</EventTitle>
+                <EventTitle>{title}</EventTitle>
 
-                <EventDate>Mon, Apr 11, 2018</EventDate>
+                <EventDate>{startDate}</EventDate>
 
-                <EventDescription>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aenean non condimentum dui, non semper ex.
-                </EventDescription>
+                <EventDescription>{description}</EventDescription>
 
-                <EventCategory>#IT</EventCategory>
+                <EventCategory>#{category}</EventCategory>
             </EventContent>
         </EventItemWrapper>
     </Link>
