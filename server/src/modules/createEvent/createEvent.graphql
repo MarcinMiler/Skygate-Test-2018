@@ -1,0 +1,12 @@
+type Mutation {
+    createEvent(
+        title: String!
+        description: String!
+        organizer: String!
+        location: String!
+        startDate: String!
+        endDate: String!
+        photo: String!
+        category: String!
+    ): Event
+}

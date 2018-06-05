@@ -36,9 +36,9 @@ const addEventMutation = `
             }
     }
 `
-const eventQuery = `
+const eventsQuery = `
     {
-        event(id: 1) {
+        events {
             id
             title,
             description,
@@ -51,8 +51,10 @@ const eventQuery = `
         }
     }
 `
-it('should return event', async () => {
+it('should return events', async () => {
     await request(url, addEventMutation)
-    const response = await request(url, eventQuery)
+    await request(url, addEventMutation)
+
+    const response = await request(url, eventsQuery)
     expect(response).toMatchSnapshot()
 })

@@ -3,6 +3,6 @@ import { Event } from '../../entity/Event'
 
 export const resolver: ResolverMap = {
     Query: {
-        event: (_, { id }) => Event.findOne(id)
+        events: () => Event.find()
     }
 }

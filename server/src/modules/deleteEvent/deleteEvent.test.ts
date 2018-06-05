@@ -1,6 +1,7 @@
 import { Connection } from 'typeorm'
 import { createTestConn } from '../../testUtils/createTestConn'
 import { request } from 'graphql-request'
+import { Event } from '../../entity/Event'
 
 let conn: Connection
 beforeAll(async () => {
@@ -36,23 +37,19 @@ const addEventMutation = `
             }
     }
 `
-const eventQuery = `
-    {
-        event(id: 1) {
-            id
-            title,
-            description,
-            organizer,
-            location,
-            startDate,
-            endDate,
-            photo,
-            category,
-        }
+const deleteEventMutation = `
+    mutation {
+        deleteEvent(id: 1)
     }
 `
 it('should return event', async () => {
     await request(url, addEventMutation)
-    const response = await request(url, eventQuery)
-    expect(response).toMatchSnapshot()
+    await request(url, addEventMutation)
+
+    const response = await request(url, deleteEventMutation)
+    expect(response).toMatchObject({ deleteEvent: true })
+
+    const events = await Event.find()
+    expect(events).toHaveLength(1)
+    expect(events[0].id).toEqual(2)
 })

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return events 1`] = `
+Object {
+  "events": Array [
+    Object {
+      "category": "Music",
+      "description": "Some event",
+      "endDate": "11.07.2018 20:00",
+      "id": 1,
+      "location": "Warsaw",
+      "organizer": "Somelab",
+      "photo": "photo.jpeg",
+      "startDate": "11.07.2018 10:30",
+      "title": "Color Festival",
+    },
+    Object {
+      "category": "Music",
+      "description": "Some event",
+      "endDate": "11.07.2018 20:00",
+      "id": 2,
+      "location": "Warsaw",
+      "organizer": "Somelab",
+      "photo": "photo.jpeg",
+      "startDate": "11.07.2018 10:30",
+      "title": "Color Festival",
+    },
+  ],
+}
+`;
