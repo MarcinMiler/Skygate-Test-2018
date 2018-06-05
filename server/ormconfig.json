@@ -31,7 +31,7 @@
         "port": 5432,
         "username": "marcin",
         "password": "marcin",
-        "database": "event",
+        "database": "event-test",
         "synchronize": true,
         "logging": false,
         "entities": [

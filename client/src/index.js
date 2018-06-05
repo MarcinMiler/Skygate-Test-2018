@@ -1,8 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { ApolloProvider } from 'react-apollo'
 import registerServiceWorker from './registerServiceWorker'
 
 import Routes from './routes'
+import { client } from './apollo'
 
-ReactDOM.render(<Routes />, document.getElementById('root'))
+const App = () => (
+    <ApolloProvider client={client}>
+        <Routes />
+    </ApolloProvider>
+)
+
+ReactDOM.render(<App />, document.getElementById('root'))
 registerServiceWorker()

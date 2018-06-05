@@ -13,7 +13,11 @@ export const startServer = async () => {
     }
 
     const options = {
-        port: process.env.NODE_ENV === 'test' ? 0 : 4000
+        port: process.env.NODE_ENV === 'test' ? 0 : 4000,
+        endpoint: '/graphql',
+        cors: {
+            origin: '*'
+        }
     }
 
     const app = await server.start(options)
