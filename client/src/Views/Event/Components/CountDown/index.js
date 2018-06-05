@@ -23,7 +23,7 @@ class CountDown extends Component {
     }
 
     calculateCountDown = () => {
-        const dateToCount = new Date('July 11, 2018 12:00:00').getTime()
+        const dateToCount = new Date(this.props.date).getTime()
         const now = new Date().getTime()
 
         const distance = dateToCount - now

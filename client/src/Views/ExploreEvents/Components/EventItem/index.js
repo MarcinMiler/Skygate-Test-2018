@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import {
     EventItemWrapper,
     EventImage,
@@ -10,22 +10,23 @@ import {
     EventCategory
 } from './style'
 
-const EventItem = ({ event: { title, description, startDate, category } }) => (
-    <Link to="/event" style={{ textDecoration: 'none' }}>
-        <EventItemWrapper>
-            <EventImage />
+const EventItem = ({
+    event: { id, title, description, startDate, category },
+    history
+}) => (
+    <EventItemWrapper onClick={() => history.push('/event/' + id)}>
+        <EventImage />
 
-            <EventContent>
-                <EventTitle>{title}</EventTitle>
+        <EventContent>
+            <EventTitle>{title}</EventTitle>
 
-                <EventDate>{startDate}</EventDate>
+            <EventDate>{startDate}</EventDate>
 
-                <EventDescription>{description}</EventDescription>
+            <EventDescription>{description}</EventDescription>
 
-                <EventCategory>#{category}</EventCategory>
-            </EventContent>
-        </EventItemWrapper>
-    </Link>
+            <EventCategory>#{category}</EventCategory>
+        </EventContent>
+    </EventItemWrapper>
 )
 
-export default EventItem
+export default withRouter(EventItem)

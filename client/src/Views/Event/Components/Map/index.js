@@ -8,22 +8,22 @@ import {
     CalendarIcon
 } from './style'
 
-const Map = () => (
+const Map = ({ event: { location, startDate, endDate } }) => (
     <MapWrapper>
         <MapTitle>See you at</MapTitle>
 
         <WrapIcon>
             <LocationIcon />
-            <MapText>Warsaw, Poland (255km from you)</MapText>
+            <MapText>{location} (255km from you)</MapText>
         </WrapIcon>
 
         <WrapIcon>
             <CalendarIcon />
-            <MapText>Start: 10.10.2018 10:30</MapText>
+            <MapText>Start: {startDate}</MapText>
         </WrapIcon>
         <WrapIcon>
             <CalendarIcon />
-            <MapText>End: 10.10.2018 20:30</MapText>
+            <MapText>End: {endDate}</MapText>
         </WrapIcon>
     </MapWrapper>
 )

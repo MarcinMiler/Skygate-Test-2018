@@ -1,18 +1,36 @@
 import React from 'react'
-import { compose } from 'react-apollo'
+import QueryWithLoading from '../../../../Components/QueryWithLoading'
+import gql from 'graphql-tag'
 
-import Spinner from '../../../../Components/Spinner'
 import EventItem from '../EventItem'
 import { EventsListWrapper } from './style'
-import { getEvents } from '../../../../Graphql/Events'
 
-const EventsList = ({ events: { events, loading } }) => {
-    if (loading) return <Spinner />
-    return (
-        <EventsListWrapper>
-            {events.map(event => <EventItem key={event.id} event={event} />)}
-        </EventsListWrapper>
-    )
-}
+const EventsList = () => (
+    <QueryWithLoading query={eventsQuery}>
+        {({ events }) => (
+            <EventsListWrapper>
+                {events.map(event => (
+                    <EventItem key={event.id} event={event} />
+                ))}
+            </EventsListWrapper>
+        )}
+    </QueryWithLoading>
+)
 
-export default compose(getEvents)(EventsList)
+const eventsQuery = gql`
+    {
+        events {
+            id
+            title
+            description
+            organizer
+            location
+            startDate
+            endDate
+            photo
+            category
+        }
+    }
+`
+
+export default EventsList

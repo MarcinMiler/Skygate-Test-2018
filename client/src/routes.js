@@ -22,7 +22,7 @@ const Routes = () => (
                 <Route exact path="/" component={Home} />
                 <Route exact path="/addEvent" component={AddEvent} />
                 <Route exact path="/expolreEvents" component={ExploreEvents} />
-                <Route exact path="/event" component={Event} />
+                <Route exact path="/event/:id" component={Event} />
                 <Route exact path="/updateEvent" component={UpdateEvent} />
             </Switch>
         </div>

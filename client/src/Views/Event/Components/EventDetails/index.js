@@ -9,25 +9,16 @@ import {
 import Title from '../../../../Components/Title'
 import CountDown from '../CountDown'
 
-const EventDetails = () => (
+const EventDetails = ({ event: { title, description, endDate } }) => (
     <EventDetailsWrapper>
         <EventImage />
 
-        <CountDown />
+        <CountDown date={endDate} />
 
         <EventContent>
-            <Title left>Color Festival</Title>
+            <Title left>{title}</Title>
 
-            <EventDescription>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque tempus congue ullamcorper. Nullam at euismod neque.
-                Donec leo tellus, semper sed lectus et, laoreet molestie lacus.
-                Etiam venenatis malesuada ipsum maximus malesuada. Praesent
-                molestie efficitur nisl quis dignissim. Nulla efficitur
-                fermentum tristique. Mauris sed fermentum nunc. Mauris
-                consectetur odio quam, vitae viverra nisi finibus sodales.
-                Vestibulum ac iaculis ante.
-            </EventDescription>
+            <EventDescription>{description}</EventDescription>
         </EventContent>
     </EventDetailsWrapper>
 )
