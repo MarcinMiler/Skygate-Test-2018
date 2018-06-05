@@ -14,14 +14,33 @@
     },
     "devDependencies": {
         "@types/glob": "^5.0.35",
+        "@types/jest": "^23.0.0",
         "@types/node": "^8.0.29",
+        "jest": "^23.1.0",
         "nodemon": "^1.17.5",
+        "ts-jest": "^22.4.6",
         "ts-node": "5.0.1",
         "tslint": "^5.10.0",
         "tslint-config-prettier": "^1.13.0",
         "typescript": "^2.9.1"
     },
     "scripts": {
-        "start": "NODE_ENV=development nodemon --exec ts-node src/index.ts"
+        "start": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
+        "test": "NODE_ENV=test jest --watch"
+    },
+    "jest": {
+        "globalSetup": "./src/testUtils/callSetup.js",
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        },
+        "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json",
+            "node"
+        ]
     }
 }
