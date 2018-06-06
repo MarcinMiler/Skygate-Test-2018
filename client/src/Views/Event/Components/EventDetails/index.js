@@ -9,11 +9,11 @@ import {
 import Title from '../../../../Components/Title'
 import CountDown from '../CountDown'
 
-const EventDetails = ({ event: { title, description, endDate } }) => (
+const EventDetails = ({ event: { title, description, startDate } }) => (
     <EventDetailsWrapper>
         <EventImage />
 
-        <CountDown date={endDate} />
+        <CountDown date={startDate} />
 
         <EventContent>
             <Title left>{title}</Title>

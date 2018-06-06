@@ -7,34 +7,75 @@ import { PrimaryButton } from '../../../../Components/Buttons'
 
 const options = ['Music', 'Networking', 'Food', 'Sport', 'Parties']
 
-const AddEventForm = () => (
+const AddEventForm = ({ changeState, createEvent }) => (
     <AddEventFormWrapper>
-        <InputWithLabel label="Title" onChange={val => console.log(val)} />
+        <InputWithLabel
+            label="Title"
+            onChange={val => changeState('title', val)}
+        />
 
-        <InputWithLabel label="Description" textArea />
+        <InputWithLabel
+            label="Description"
+            textArea
+            onChange={val => changeState('description', val)}
+        />
 
-        <InputWithLabel label="Name of the organizer" />
+        <InputWithLabel
+            label="Name of the organizer"
+            onChange={val => changeState('organizer', val)}
+        />
 
         <Dropdown
             name="Select category"
             options={options}
-            onChange={val => console.log(val)}
+            onChange={val => changeState('category', val)}
         />
 
         <InputRow>
-            <InputWithLabel label="Start date" type="date" autoWidth />
-            <InputWithLabel label="Start time" type="time" autoWidth />
+            <InputWithLabel
+                label="Start date"
+                type="date"
+                autoWidth
+                onChange={val => changeState('startDate', val)}
+            />
+            <InputWithLabel
+                label="Start time"
+                type="time"
+                autoWidth
+                onChange={val => changeState('startTime', val)}
+            />
 
-            <InputWithLabel label="End date" type="date" autoWidth />
-            <InputWithLabel label="End time" type="time" autoWidth />
+            <InputWithLabel
+                label="End date"
+                type="date"
+                autoWidth
+                onChange={val => changeState('endDate', val)}
+            />
+            <InputWithLabel
+                label="End time"
+                type="time"
+                autoWidth
+                onChange={val => changeState('endTime', val)}
+            />
         </InputRow>
 
-        <InputWithLabel label="Localization" />
+        <InputWithLabel
+            label="Localization"
+            onChange={val => changeState('location', val)}
+        />
 
-        <InputWithLabel label="Photo (url)" />
+        <InputWithLabel
+            label="Photo (url)"
+            onChange={val => changeState('photo', val)}
+        />
 
         <WrapButton>
-            <PrimaryButton height="55px" borderRadius shadow>
+            <PrimaryButton
+                height="55px"
+                borderRadius
+                shadow
+                onClick={() => createEvent()}
+            >
                 Create event
             </PrimaryButton>
         </WrapButton>
