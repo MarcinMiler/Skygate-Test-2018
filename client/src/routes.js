@@ -23,7 +23,7 @@ const Routes = () => (
                 <Route exact path="/addEvent" component={AddEvent} />
                 <Route exact path="/exploreEvents" component={ExploreEvents} />
                 <Route exact path="/event/:id" component={Event} />
-                <Route exact path="/updateEvent" component={UpdateEvent} />
+                <Route exact path="/updateEvent/:id" component={UpdateEvent} />
             </Switch>
         </div>
     </BrowserRouter>

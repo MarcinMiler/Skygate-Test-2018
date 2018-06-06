@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 import { PrimaryButton } from '../../../../Components/Buttons'
 import Modal from '../Modal'
 import { Row, ButtonsWrapper } from './style'
 
-const Buttons = ({ toggleModal, isOpen, deleteEvent }) => (
+const Buttons = ({ history, toggleModal, isOpen, id, deleteEvent }) => (
     <ButtonsWrapper>
         <Modal
             isOpen={isOpen}
@@ -17,13 +17,15 @@ const Buttons = ({ toggleModal, isOpen, deleteEvent }) => (
                 Delete Event
             </PrimaryButton>
 
-            <Link to="/updateEvent" style={{ textDecoration: 'none' }}>
-                <PrimaryButton shadow borderRadius>
-                    Update Event
-                </PrimaryButton>
-            </Link>
+            <PrimaryButton
+                shadow
+                borderRadius
+                onClick={() => history.push('/updateEvent/' + id)}
+            >
+                Update Event
+            </PrimaryButton>
         </Row>
     </ButtonsWrapper>
 )
 
-export default Buttons
+export default withRouter(Buttons)

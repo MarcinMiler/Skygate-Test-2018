@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { compose } from 'react-apollo'
+import { createEvent } from '../../../../graphql/createEvent'
 
-import createEvent from '../../../../graphql/createEvent'
 import AddEventForm from './AddEventForm'
 
 class AddEventFormContainer extends Component {
@@ -27,10 +27,8 @@ class AddEventFormContainer extends Component {
                 description: this.state.description,
                 organizer: this.state.organizer,
                 category: this.state.category,
-                startDate: this.state.startDate,
-                startTime: this.state.startTime,
-                endDate: this.state.endDate,
-                endTime: this.state.endTime,
+                startDate: this.state.startDate + ' ' + this.state.startTime,
+                endDate: this.state.endDate + ' ' + this.state.endTime,
                 location: this.state.location,
                 photo: this.state.photo
             }

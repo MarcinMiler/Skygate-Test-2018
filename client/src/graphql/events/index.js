@@ -17,6 +17,6 @@ const eventsQuery = gql`
     }
 `
 
-export default graphql(eventsQuery, {
+export const getEvents = graphql(eventsQuery, {
     options: { fetchPolicy: 'network-only' }
 })

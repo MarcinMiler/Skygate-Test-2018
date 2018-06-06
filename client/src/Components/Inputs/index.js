@@ -15,7 +15,9 @@ export const InputWithLabel = ({
     onChange,
     textArea,
     type,
-    autoWidth
+    autoWidth,
+    placeholder,
+    value
 }) => (
     <div>
         <Label>{label}</Label>
@@ -23,12 +25,16 @@ export const InputWithLabel = ({
         <InputContainer>
             {textArea ? (
                 <StyledTextArea
+                    placeholder={placeholder}
+                    value={value}
                     onChange={e => (onChange ? onChange(e.target.value) : null)}
                 />
             ) : (
                 <StyledInputWithLabel
                     autoWidth={autoWidth}
                     type={type}
+                    placeholder={placeholder}
+                    value={value}
                     onChange={e => (onChange ? onChange(e.target.value) : null)}
                 />
             )}

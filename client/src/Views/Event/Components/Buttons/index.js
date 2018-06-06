@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { compose } from 'react-apollo'
+import { deleteEvent } from '../../../../graphql/deleteEvent'
 
 import Buttons from './Buttons'
-import { Mutation } from 'react-apollo'
-import gql from 'graphql-tag'
 
 class ButtonsContainer extends Component {
     state = {
@@ -12,32 +11,22 @@ class ButtonsContainer extends Component {
 
     toggleModal = () => this.setState(({ isOpen }) => ({ isOpen: !isOpen }))
 
+    deleteEvent = () => {
+        this.props.deleteEvent(this.props.id)
+        this.props.history.push('/exploreEvents')
+    }
+
     render() {
         const { id } = this.props
         return (
-            <Mutation mutation={deleteEventMutation} variables={{ id }}>
-                {deleteEvent => {
-                    const deleteEventAndChangeRoute = () => {
-                        deleteEvent()
-                        this.props.history.push('/exploreEvents')
-                    }
-                    return (
-                        <Buttons
-                            toggleModal={this.toggleModal}
-                            isOpen={this.state.isOpen}
-                            deleteEvent={deleteEventAndChangeRoute}
-                        />
-                    )
-                }}
-            </Mutation>
+            <Buttons
+                toggleModal={this.toggleModal}
+                isOpen={this.state.isOpen}
+                id={id}
+                deleteEvent={this.deleteEvent}
+            />
         )
     }
 }
 
-const deleteEventMutation = gql`
-    mutation deleteEvent($id: Int!) {
-        deleteEvent(id: $id)
-    }
-`
-
-export default withRouter(ButtonsContainer)
+export default compose(deleteEvent)(ButtonsContainer)

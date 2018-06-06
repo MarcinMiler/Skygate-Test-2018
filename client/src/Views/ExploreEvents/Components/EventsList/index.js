@@ -1,6 +1,6 @@
 import React from 'react'
 import { compose } from 'react-apollo'
-import getEvents from '../../../../graphql/events'
+import { getEvents } from '../../../../graphql/events'
 
 import { withSpinner } from '../../../../Components/withSpinner'
 import EventItem from '../EventItem'

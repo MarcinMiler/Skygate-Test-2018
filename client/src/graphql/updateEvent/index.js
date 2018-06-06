@@ -1,18 +1,20 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-const createEventMutation = gql`
-    mutation createEvent(
-        $title: String!
-        $description: String!
-        $organizer: String!
-        $location: String!
-        $startDate: String!
-        $endDate: String!
-        $photo: String!
-        $category: String!
+const updateEventMutation = gql`
+    mutation updateEvent(
+        $id: Int!
+        $title: String
+        $description: String
+        $organizer: String
+        $location: String
+        $startDate: String
+        $endDate: String
+        $photo: String
+        $category: String
     ) {
-        createEvent(
+        updateEvent(
+            id: $id
             title: $title
             description: $description
             organizer: $organizer
@@ -35,4 +37,4 @@ const createEventMutation = gql`
     }
 `
 
-export const createEvent = graphql(createEventMutation, { name: 'createEvent' })
+export const updateEvent = graphql(updateEventMutation, { name: 'updateEvent' })

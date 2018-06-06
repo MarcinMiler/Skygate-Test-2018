@@ -9,22 +9,20 @@ import Map from './Components/Map'
 import ButtonsContainer from './Components/Buttons'
 
 const Event = ({
-    data: { event, loading },
+    data: { event },
     match: {
         params: { id }
-    }
-}) => {
-    if (loading) return <div />
-    return (
-        <Container>
-            <EventDetails event={event} />
+    },
+    history
+}) => (
+    <Container>
+        <EventDetails event={event} />
 
-            <Map event={event} />
+        <Map event={event} />
 
-            <ButtonsContainer id={id} />
-        </Container>
-    )
-}
+        <ButtonsContainer id={id} history={history} />
+    </Container>
+)
 
 export default compose(
     getEvent,
