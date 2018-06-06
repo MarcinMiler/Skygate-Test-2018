@@ -3,13 +3,13 @@ import Container from '../../Components/Container'
 import Title from '../../Components/Title'
 import AddEventFormContainer from './Components/AddEventFrom'
 
-const AddEvent = () => (
+const AddEvent = ({ history }) => (
     <Container>
         <Title left padd="40px">
             Create Event
         </Title>
 
-        <AddEventFormContainer />
+        <AddEventFormContainer history={history} />
     </Container>
 )
 

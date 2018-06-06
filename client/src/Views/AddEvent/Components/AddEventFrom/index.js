@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Mutation } from 'react-apollo'
+import { compose } from 'react-apollo'
+
+import createEvent from '../../../../graphql/createEvent'
 import AddEventForm from './AddEventForm'
-import gql from 'graphql-tag'
 
 class AddEventFormContainer extends Component {
     state = {
@@ -19,76 +20,32 @@ class AddEventFormContainer extends Component {
 
     handleChangeState = (key, value) => this.setState({ [key]: value })
 
+    createEvent = async () => {
+        const response = await this.props.createEvent({
+            variables: {
+                title: this.state.title,
+                description: this.state.description,
+                organizer: this.state.organizer,
+                category: this.state.category,
+                startDate: this.state.startDate,
+                startTime: this.state.startTime,
+                endDate: this.state.endDate,
+                endTime: this.state.endTime,
+                location: this.state.location,
+                photo: this.state.photo
+            }
+        })
+        this.props.history.push('event/' + response.data.createEvent.id)
+    }
+
     render() {
-        const {
-            title,
-            description,
-            organizer,
-            category,
-            startDate,
-            startTime,
-            endDate,
-            endTime,
-            location,
-            photo
-        } = this.state
         return (
-            <Mutation
-                mutation={createEventMutation}
-                variables={{
-                    title,
-                    description,
-                    organizer,
-                    category,
-                    startDate: startDate + ' ' + startTime,
-                    endDate: endDate + ' ' + endTime,
-                    location,
-                    photo
-                }}
-            >
-                {createEvent => (
-                    <AddEventForm
-                        changeState={this.handleChangeState}
-                        createEvent={createEvent}
-                    />
-                )}
-            </Mutation>
+            <AddEventForm
+                changeState={this.handleChangeState}
+                createEvent={this.createEvent}
+            />
         )
     }
 }
 
-const createEventMutation = gql`
-    mutation createEvent(
-        $title: String!
-        $description: String!
-        $organizer: String!
-        $location: String!
-        $startDate: String!
-        $endDate: String!
-        $photo: String!
-        $category: String!
-    ) {
-        createEvent(
-            title: $title
-            description: $description
-            organizer: $organizer
-            location: $location
-            startDate: $startDate
-            endDate: $endDate
-            photo: $photo
-            category: $category
-        ) {
-            id
-            title
-            description
-            organizer
-            location
-            startDate
-            endDate
-            photo
-            category
-        }
-    }
-`
-
-export default AddEventFormContainer
+export default compose(createEvent)(AddEventFormContainer)

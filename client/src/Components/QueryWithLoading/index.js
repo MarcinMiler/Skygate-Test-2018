@@ -3,8 +3,8 @@ import { Query } from 'react-apollo'
 
 import Spinner from '../Spinner'
 
-const QueryWithLoading = ({ children, query, variables }) => (
-    <Query query={query} variables={variables}>
+const QueryWithLoading = ({ children, ...props }) => (
+    <Query {...props}>
         {({ data, loading }) => (loading ? <Spinner /> : children(data))}
     </Query>
 )

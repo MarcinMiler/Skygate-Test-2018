@@ -10,7 +10,7 @@ const Navbar = () => (
         </Link>
 
         <Wrap>
-            <Link to="/expolreEvents" style={{ textDecoration: 'none' }}>
+            <Link to="/exploreEvents" style={{ textDecoration: 'none' }}>
                 <NavItem>Explore Events</NavItem>
             </Link>
 

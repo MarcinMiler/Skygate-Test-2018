@@ -8,7 +8,7 @@ import {
 } from './style'
 import { PrimaryButton } from '../../../../Components/Buttons'
 
-const Modal = ({ isOpen, toggleModal }) =>
+const Modal = ({ isOpen, toggleModal, deleteEvent }) =>
     isOpen ? (
         <ModalWrapper>
             <ModalContent>
@@ -24,7 +24,11 @@ const Modal = ({ isOpen, toggleModal }) =>
                             Cancel
                         </PrimaryButton>
 
-                        <PrimaryButton shadow borderRadius>
+                        <PrimaryButton
+                            shadow
+                            borderRadius
+                            onClick={() => deleteEvent()}
+                        >
                             Delete
                         </PrimaryButton>
                     </Row>

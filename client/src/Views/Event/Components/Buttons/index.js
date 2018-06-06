@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Row, ButtonsWrapper } from './style'
-import { PrimaryButton } from '../../../../Components/Buttons'
-import Modal from '../Modal'
+import { withRouter } from 'react-router-dom'
 
-class Buttons extends Component {
+import Buttons from './Buttons'
+import { Mutation } from 'react-apollo'
+import gql from 'graphql-tag'
+
+class ButtonsContainer extends Component {
     state = {
         isOpen: false
     }
@@ -12,30 +13,31 @@ class Buttons extends Component {
     toggleModal = () => this.setState(({ isOpen }) => ({ isOpen: !isOpen }))
 
     render() {
+        const { id } = this.props
         return (
-            <ButtonsWrapper>
-                <Modal
-                    isOpen={this.state.isOpen}
-                    toggleModal={this.toggleModal}
-                />
-                <Row>
-                    <PrimaryButton
-                        shadow
-                        borderRadius
-                        onClick={() => this.toggleModal()}
-                    >
-                        Delete Event
-                    </PrimaryButton>
-
-                    <Link to="/updateEvent" style={{ textDecoration: 'none' }}>
-                        <PrimaryButton shadow borderRadius>
-                            Update Event
-                        </PrimaryButton>
-                    </Link>
-                </Row>
-            </ButtonsWrapper>
+            <Mutation mutation={deleteEventMutation} variables={{ id }}>
+                {deleteEvent => {
+                    const deleteEventAndChangeRoute = () => {
+                        deleteEvent()
+                        this.props.history.push('/exploreEvents')
+                    }
+                    return (
+                        <Buttons
+                            toggleModal={this.toggleModal}
+                            isOpen={this.state.isOpen}
+                            deleteEvent={deleteEventAndChangeRoute}
+                        />
+                    )
+                }}
+            </Mutation>
         )
     }
 }
 
-export default Buttons
+const deleteEventMutation = gql`
+    mutation deleteEvent($id: Int!) {
+        deleteEvent(id: $id)
+    }
+`
+
+export default withRouter(ButtonsContainer)
