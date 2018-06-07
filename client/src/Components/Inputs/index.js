@@ -42,7 +42,7 @@ export const InputWithLabel = ({
     </div>
 )
 
-export const InputWithIcon = ({ placeholder, change, Icon }) => (
+export const InputWithIcon = ({ placeholder, onChange, Icon }) => (
     <Wrapper>
         <WrapIcon>
             <Icon />
@@ -50,7 +50,7 @@ export const InputWithIcon = ({ placeholder, change, Icon }) => (
 
         <StyledInputWithIcon
             placeholder={placeholder}
-            onChange={e => (change ? change(e.target.value) : null)}
+            onChange={e => (onChange ? onChange(e.target.value) : null)}
         />
 
         <PrimaryButton borderRadius>Search</PrimaryButton>
