@@ -13,7 +13,7 @@ export const geoCode = address => {
 
 class GoogleAutocomplete extends Component {
     state = {
-        suggestions: [],
+        suggestions: null,
         inputValue: ''
     }
 
@@ -41,15 +41,45 @@ class GoogleAutocomplete extends Component {
         })
     }
 
+    clearSuggestions = () => this.setState(() => ({ suggestions: null }))
+
     handleInputChange = value => {
         this.setState(() => ({ inputValue: value }))
         this.debounce()
     }
 
+    handleInputOnBlur = () => {
+        if (!this.mouseOnSuggestion) {
+            this.clearSuggestions()
+        }
+    }
+
+    suggestionClick = value => {
+        this.setState(() => ({ inputValue: value }))
+        this.clearSuggestions()
+    }
+
+    suggestionMouseEnter = () => (this.mouseOnSuggestion = true)
+
+    suggestionMouseLeave = () => (this.mouseOnSuggestion = false)
+
+    getSearchInputProps = () => ({
+        onChange: e => this.handleInputChange(e.target.value),
+        onBlur: () => this.handleInputOnBlur(),
+        value: this.state.inputValue
+    })
+
+    getSuggestionItemProps = suggestion => ({
+        onClick: () => this.suggestionClick(suggestion.description),
+        onMouseEnter: () => this.suggestionMouseEnter(),
+        onMouseLeave: () => this.suggestionMouseLeave()
+    })
+
     render() {
         return this.props.children({
             suggestions: this.state.suggestions,
-            handleInputChange: this.handleInputChange
+            getSearchInputProps: this.getSearchInputProps,
+            getSuggestionItemProps: this.getSuggestionItemProps
         })
     }
 }

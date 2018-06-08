@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { InputWithIcon } from '../../../../Components/Inputs'
-import { SearchWrapper, SearchIcon } from './style'
+import { SearchInput } from '../../../../Components/Inputs'
+import { SearchWrapper } from './style'
 
 const Search = () => (
     <SearchWrapper>
-        <InputWithIcon placeholder="Search for events..." Icon={SearchIcon} />
+        <SearchInput />
     </SearchWrapper>
 )
 

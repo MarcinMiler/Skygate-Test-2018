@@ -6,9 +6,15 @@ import {
     StyledInputWithLabel,
     Wrapper,
     WrapIcon,
-    StyledInputWithIcon
+    Sugesstion,
+    SugesstionWrapper,
+    Row,
+    StyledSearchInput,
+    StyledSearchInputWrapper,
+    SearchIcon,
+    PoweredByGoogle,
+    GoogleImage
 } from './style'
-import { PrimaryButton } from '../../Components/Buttons'
 
 export const InputWithLabel = ({
     label,
@@ -42,17 +48,62 @@ export const InputWithLabel = ({
     </div>
 )
 
-export const InputWithIcon = ({ placeholder, onChange, Icon }) => (
+export const SearchInput = ({
+    titleChange,
+    titleSuggestions,
+    locationSuggestions,
+    getSearchInputProps,
+    getSuggestionItemProps
+}) => (
     <Wrapper>
         <WrapIcon>
-            <Icon />
+            <SearchIcon />
         </WrapIcon>
 
-        <StyledInputWithIcon
-            placeholder={placeholder}
-            onChange={e => (onChange ? onChange(e.target.value) : null)}
-        />
+        <Row>
+            <StyledSearchInputWrapper>
+                <StyledSearchInput
+                    placeholder="Search by title..."
+                    onChange={e =>
+                        titleChange ? titleChange(e.target.value) : null
+                    }
+                />
 
-        <PrimaryButton borderRadius>Search</PrimaryButton>
+                {titleSuggestions ? (
+                    <SugesstionWrapper>
+                        {titleSuggestions.map(s => (
+                            <Sugesstion key={s.id}>{s.description}</Sugesstion>
+                        ))}
+                    </SugesstionWrapper>
+                ) : (
+                    <div />
+                )}
+            </StyledSearchInputWrapper>
+
+            <StyledSearchInputWrapper>
+                <StyledSearchInput
+                    placeholder="Search by location..."
+                    {...getSearchInputProps()}
+                />
+
+                {locationSuggestions ? (
+                    <SugesstionWrapper>
+                        {locationSuggestions.map(s => (
+                            <Sugesstion
+                                key={s.id}
+                                {...getSuggestionItemProps(s)}
+                            >
+                                {s.description}
+                            </Sugesstion>
+                        ))}
+                        <PoweredByGoogle>
+                            <GoogleImage />
+                        </PoweredByGoogle>
+                    </SugesstionWrapper>
+                ) : (
+                    <div />
+                )}
+            </StyledSearchInputWrapper>
+        </Row>
     </Wrapper>
 )

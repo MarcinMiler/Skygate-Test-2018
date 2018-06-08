@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import MDSearch from 'react-icons/lib/md/search'
+import Google from '../../Images/powered_by_google_on_white.png'
 
 export const InputContainer = styled.div`
     width: 100%;
@@ -72,16 +74,68 @@ export const WrapIcon = styled.div`
     background-color: white;
     border-right: 1px solid #f2f1f6;
 `
-export const StyledInputWithIcon = styled.input`
-    height: 55px;
+export const SearchIcon = styled(MDSearch)`
+    font-size: 32px;
+    color: gray;
+`
+export const Row = styled.div`
     flex-grow: 1;
-    padding: 0 20px 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+`
+export const StyledSearchInputWrapper = styled.div`
+    width: 50%;
+    height: 55px;
+    position: relative;
+`
+export const StyledSearchInput = styled.input`
+    width: 100%;
+    height: 55px;
+    padding-left: 20px;
     border: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 15px;
     color: black;
+    border-right: 1px solid #f2f1f6;
+    box-sizing: border-box;
+
     &:focus {
         outline: none;
     }
+`
+export const SugesstionWrapper = styled.div`
+    width: 100%;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    box-shadow: 0px 7px 15px #cccccc;
+    z-index: 1100;
+`
+export const Sugesstion = styled.div`
+    width: 432px;
+    height: 55px;
+    padding: 0 10px 0 10px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    cursor: pointer;
+
+    &:hover {
+        background-color: lightgray;
+    }
+`
+export const PoweredByGoogle = styled.div`
+    width: 100%;
+    height: 25px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: white;
+`
+export const GoogleImage = styled.div`
+    width: 144px;
+    height: 18px;
+    background: url(${Google});
 `
