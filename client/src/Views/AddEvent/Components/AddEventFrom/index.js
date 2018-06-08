@@ -3,6 +3,10 @@ import { compose } from 'react-apollo'
 import { createEvent } from '../../../../graphql/createEvent'
 
 import AddEventForm from './AddEventForm'
+import {
+    GoogleAutocomplete,
+    geoCode
+} from '../../../../Components/GoogleAutocomplete'
 
 class AddEventFormContainer extends Component {
     state = {
@@ -15,7 +19,9 @@ class AddEventFormContainer extends Component {
         endDate: '',
         endTime: '',
         location: '',
-        photo: ''
+        photo: '',
+        lat: null,
+        lng: null
     }
 
     handleChangeState = (key, value) => this.setState({ [key]: value })
@@ -36,12 +42,37 @@ class AddEventFormContainer extends Component {
         this.props.history.push('event/' + response.data.createEvent.id)
     }
 
+    getLatLng = async address => {
+        const data = await geoCode(address)
+
+        if (data[0]) {
+            this.setState(() => ({
+                lat: data[0].geometry.location.lat(),
+                lng: data[0].geometry.location.lng()
+            }))
+        }
+    }
+
     render() {
         return (
-            <AddEventForm
-                changeState={this.handleChangeState}
-                createEvent={this.createEvent}
-            />
+            <GoogleAutocomplete
+                onChange={val => this.handleChangeState('location', val)}
+                onBlur={val => this.getLatLng(val)}
+            >
+                {({
+                    suggestions,
+                    getSearchInputProps,
+                    getSuggestionItemProps
+                }) => (
+                    <AddEventForm
+                        changeState={this.handleChangeState}
+                        createEvent={this.createEvent}
+                        suggestions={suggestions}
+                        getSearchInputProps={getSearchInputProps}
+                        getSuggestionItemProps={getSuggestionItemProps}
+                    />
+                )}
+            </GoogleAutocomplete>
         )
     }
 }

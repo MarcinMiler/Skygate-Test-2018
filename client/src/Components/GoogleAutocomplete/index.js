@@ -11,7 +11,7 @@ export const geoCode = address => {
     })
 }
 
-class GoogleAutocomplete extends Component {
+export class GoogleAutocomplete extends Component {
     state = {
         suggestions: null,
         inputValue: ''
@@ -33,17 +33,26 @@ class GoogleAutocomplete extends Component {
     }
 
     autoCompleteCallback = (predictions, status) => {
-        this.setState({
-            suggestions: predictions.map((prediction, i) => ({
-                id: prediction.id,
-                description: prediction.description
-            }))
-        })
+        if (predictions) {
+            this.setState({
+                suggestions: predictions.map((prediction, i) => ({
+                    id: prediction.id,
+                    description: prediction.description
+                }))
+            })
+        }
     }
 
     clearSuggestions = () => this.setState(() => ({ suggestions: null }))
 
+    onChange = value => {
+        if (this.props.onChange) {
+            this.props.onChange(value)
+        }
+    }
+
     handleInputChange = value => {
+        this.onChange(value)
         this.setState(() => ({ inputValue: value }))
         this.debounce()
     }
@@ -52,9 +61,13 @@ class GoogleAutocomplete extends Component {
         if (!this.mouseOnSuggestion) {
             this.clearSuggestions()
         }
+        if (this.props.onBlur) {
+            this.props.onBlur(this.state.inputValue)
+        }
     }
 
     suggestionClick = value => {
+        this.onChange(value)
         this.setState(() => ({ inputValue: value }))
         this.clearSuggestions()
     }
@@ -83,5 +96,3 @@ class GoogleAutocomplete extends Component {
         })
     }
 }
-
-export default GoogleAutocomplete

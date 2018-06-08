@@ -3,17 +3,7 @@ import {
     Label,
     InputContainer,
     StyledTextArea,
-    StyledInputWithLabel,
-    Wrapper,
-    WrapIcon,
-    Sugesstion,
-    SugesstionWrapper,
-    Row,
-    StyledSearchInput,
-    StyledSearchInputWrapper,
-    SearchIcon,
-    PoweredByGoogle,
-    GoogleImage
+    StyledInputWithLabel
 } from './style'
 
 export const InputWithLabel = ({
@@ -46,64 +36,4 @@ export const InputWithLabel = ({
             )}
         </InputContainer>
     </div>
-)
-
-export const SearchInput = ({
-    titleChange,
-    titleSuggestions,
-    locationSuggestions,
-    getSearchInputProps,
-    getSuggestionItemProps
-}) => (
-    <Wrapper>
-        <WrapIcon>
-            <SearchIcon />
-        </WrapIcon>
-
-        <Row>
-            <StyledSearchInputWrapper>
-                <StyledSearchInput
-                    placeholder="Search by title..."
-                    onChange={e =>
-                        titleChange ? titleChange(e.target.value) : null
-                    }
-                />
-
-                {titleSuggestions ? (
-                    <SugesstionWrapper>
-                        {titleSuggestions.map(s => (
-                            <Sugesstion key={s.id}>{s.description}</Sugesstion>
-                        ))}
-                    </SugesstionWrapper>
-                ) : (
-                    <div />
-                )}
-            </StyledSearchInputWrapper>
-
-            <StyledSearchInputWrapper>
-                <StyledSearchInput
-                    placeholder="Search by location..."
-                    {...getSearchInputProps()}
-                />
-
-                {locationSuggestions ? (
-                    <SugesstionWrapper>
-                        {locationSuggestions.map(s => (
-                            <Sugesstion
-                                key={s.id}
-                                {...getSuggestionItemProps(s)}
-                            >
-                                {s.description}
-                            </Sugesstion>
-                        ))}
-                        <PoweredByGoogle>
-                            <GoogleImage />
-                        </PoweredByGoogle>
-                    </SugesstionWrapper>
-                ) : (
-                    <div />
-                )}
-            </StyledSearchInputWrapper>
-        </Row>
-    </Wrapper>
 )

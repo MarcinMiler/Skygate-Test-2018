@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { SearchInput } from '../../../../Components/Inputs'
+import { DoubleSearchInput } from '../../../../Components/SearchInputs'
 import { SearchWrapper } from './style'
 
 const Search = () => (
     <SearchWrapper>
-        <SearchInput />
+        <DoubleSearchInput />
     </SearchWrapper>
 )
 

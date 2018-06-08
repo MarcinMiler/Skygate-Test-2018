@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { SearchInput } from '../../../../Components/Inputs'
-import GoogleAutocomplete from '../../../../Components/GoogleAutocomplete'
+import { DoubleSearchInput } from '../../../../Components/SearchInputs'
+import { GoogleAutocomplete } from '../../../../Components/GoogleAutocomplete'
 
 import { Wrapper } from './style'
 import Title from '../../../../Components/Title'
@@ -18,7 +18,7 @@ class Search extends Component {
                         getSearchInputProps,
                         getSuggestionItemProps
                     }) => (
-                        <SearchInput
+                        <DoubleSearchInput
                             locationSuggestions={suggestions}
                             getSearchInputProps={getSearchInputProps}
                             getSuggestionItemProps={getSuggestionItemProps}
