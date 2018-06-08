@@ -8,8 +8,6 @@ import Filter from './Components/Filter'
 
 const ExploreEvents = () => (
     <Container>
-        <Search />
-
         <Row>
             <Filter />
             <EventsList />
