@@ -5,7 +5,7 @@ import { getEvent } from '../../graphql/event'
 import { withSpinner } from '../../Components/withSpinner'
 import Container from '../../Components/Container'
 import EventDetails from './Components/EventDetails'
-import Map from './Components/Map'
+import { LocationInfo } from './Components/LocationInfo'
 import ButtonsContainer from './Components/Buttons'
 
 const Event = ({
@@ -18,7 +18,7 @@ const Event = ({
     <Container>
         <EventDetails event={event} />
 
-        <Map event={event} />
+        <LocationInfo event={event} />
 
         <ButtonsContainer id={id} history={history} />
     </Container>

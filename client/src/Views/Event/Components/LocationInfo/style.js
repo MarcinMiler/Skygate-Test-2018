@@ -2,16 +2,15 @@ import styled from 'styled-components'
 
 import MDCalendar from 'react-icons/lib/md/event-note'
 import MDLocation from 'react-icons/lib/md/location-on'
-import MDRoom from 'react-icons/lib/md/room'
 
-export const MapWrapper = styled.div`
+export const LocationInfoWrapper = styled.div`
     width: 100%;
     margin: 100px 0 60px 0;
     background-color: white;
     border-radius: 4px;
     box-shadow: 0px 0px 15px #cccccc;
 `
-export const MapTitle = styled.p`
+export const LocationInfoTitle = styled.p`
     margin: 0;
     padding: 50px;
     font-size: 28px;
@@ -23,7 +22,7 @@ export const WrapIcon = styled.div`
     flex-direction: row;
     align-items: center;
 `
-export const MapText = styled.p`
+export const LocationInfoText = styled.p`
     margin: 0 0 0 10px;
     font-size: 20px;
     color: gray;
@@ -39,8 +38,4 @@ export const LocationIcon = styled(MDLocation)`
 export const GoogleMapContainer = styled.div`
     width: 100%;
     height: 600px;
-`
-export const Marker = styled(MDRoom)`
-    font-size: 48px;
-    color: #f50057;
 `
