@@ -1,13 +1,21 @@
 import React from 'react'
 
-import { UpdateEventFormWrapper, InputRow, WrapButton } from './style'
 import { InputWithLabel } from '../../../../Components/Inputs'
+import { SingleSearchInput } from '../../../../Components/SearchInputs'
 import Dropdown from '../../../../Components/Dropdown'
 import { PrimaryButton } from '../../../../Components/Buttons'
+import { UpdateEventFormWrapper, InputRow, WrapButton } from './style'
 
 const options = ['Music', 'Networking', 'Food', 'Sport', 'Parties']
 
-const UpdateEventForm = ({ updateEvent, changeState, state }) => (
+const UpdateEventForm = ({
+    updateEvent,
+    changeState,
+    state,
+    suggestions,
+    getSearchInputProps,
+    getSuggestionItemProps
+}) => (
     <UpdateEventFormWrapper>
         <InputWithLabel
             label="Title"
@@ -57,7 +65,12 @@ const UpdateEventForm = ({ updateEvent, changeState, state }) => (
             />
         </InputRow>
 
-        <InputWithLabel label="Localization" value={state.location} />
+        <SingleSearchInput
+            label="Localization"
+            suggestions={suggestions}
+            getSearchInputProps={getSearchInputProps}
+            getSuggestionItemProps={getSuggestionItemProps}
+        />
 
         <InputWithLabel label="Photo (url)" value={state.photo} />
 

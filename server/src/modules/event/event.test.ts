@@ -20,6 +20,8 @@ const addEventMutation = `
             description: "Some event"
             organizer: "Somelab"
             location: "Warsaw"
+            lat: 50.5
+            lng: 35.5
             startDate: "11.07.2018 10:30"
             endDate: "11.07.2018 20:00"
             photo: "photo.jpeg"
@@ -29,6 +31,8 @@ const addEventMutation = `
                 description,
                 organizer,
                 location,
+                lat,
+                lng,
                 startDate,
                 endDate,
                 photo,
@@ -44,6 +48,8 @@ const eventQuery = `
             description,
             organizer,
             location,
+            lat,
+            lng,
             startDate,
             endDate,
             photo,

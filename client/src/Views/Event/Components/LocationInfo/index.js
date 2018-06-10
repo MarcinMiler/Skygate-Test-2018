@@ -28,8 +28,8 @@ export class LocationInfo extends Component {
         }
 
         const p2 = {
-            lat: 51.064825,
-            lng: 19.444644
+            lat: this.props.event.lat,
+            lng: this.props.event.lng
         }
 
         const rad = x => (x * Math.PI) / 180
@@ -55,7 +55,7 @@ export class LocationInfo extends Component {
 
     render() {
         const {
-            event: { location, startDate, endDate }
+            event: { location, startDate, endDate, lat, lng }
         } = this.props
         return (
             <LocationInfoWrapper>
@@ -79,7 +79,7 @@ export class LocationInfo extends Component {
                 </WrapIcon>
 
                 <GoogleMapContainer>
-                    <Map />
+                    <Map lat={lat} lng={lng} />
                 </GoogleMapContainer>
             </LocationInfoWrapper>
         )

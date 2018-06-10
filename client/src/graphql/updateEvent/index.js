@@ -8,6 +8,8 @@ const updateEventMutation = gql`
         $description: String
         $organizer: String
         $location: String
+        $lat: Float
+        $lng: Float
         $startDate: String
         $endDate: String
         $photo: String
@@ -19,6 +21,8 @@ const updateEventMutation = gql`
             description: $description
             organizer: $organizer
             location: $location
+            lat: $lat
+            lng: $lng
             startDate: $startDate
             endDate: $endDate
             photo: $photo
@@ -29,6 +33,8 @@ const updateEventMutation = gql`
             description
             organizer
             location
+            lat
+            lng
             startDate
             endDate
             photo

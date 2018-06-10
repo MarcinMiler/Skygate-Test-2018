@@ -18,6 +18,8 @@ const title = 'Meetup'
 const description = 'Some meetup'
 const organizer = 'Connect People'
 const location = 'Cracow'
+const lat = 50.5
+const lng = 35.35
 const startDate = '11.11.2018 14:00'
 const endDate = '11.11.2018 24:00'
 const photo = 'groupPhoto.jpeg'
@@ -30,6 +32,8 @@ const addEventMutation = `
             description: "Some event"
             organizer: "Somelab"
             location: "Warsaw"
+            lat: 50.5
+            lng: 35.5
             startDate: "11.07.2018 10:30"
             endDate: "11.07.2018 20:00"
             photo: "photo.jpeg"
@@ -54,6 +58,8 @@ const updateEventMutation = `
             description: "${description}"
             organizer: "${organizer}"
             location: "${location}"
+            lat: ${lat}
+            lng: ${lng}
             startDate: "${startDate}"
             endDate: "${endDate}"
             photo: "${photo}"
@@ -72,7 +78,7 @@ const updateEventMutation = `
     }
 `
 
-it('should create new event', async () => {
+it('should update event', async () => {
     await request(url, addEventMutation)
 
     const response = await request(url, updateEventMutation)
@@ -97,6 +103,8 @@ it('should create new event', async () => {
         description,
         organizer,
         location,
+        lat,
+        lng,
         startDate,
         endDate,
         photo,

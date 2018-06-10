@@ -12,6 +12,12 @@ export class Event extends BaseEntity {
 
     @Column() location: string
 
+    @Column({ type: 'float', nullable: true })
+    lat: number
+
+    @Column({ type: 'float', nullable: true })
+    lng: number
+
     @Column() startDate: string
 
     @Column() endDate: string

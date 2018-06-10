@@ -11,11 +11,8 @@ export const Map = compose(
         mapElement: <div style={{ height: `100%` }} />
     }),
     withGoogleMap
-)(() => (
-    <GoogleMap
-        defaultZoom={13}
-        defaultCenter={{ lat: 52.2296756, lng: 21.012228699999998 }}
-    >
-        <Marker position={{ lat: 52.2296756, lng: 21.012228699999998 }} />
+)(({ lat, lng }) => (
+    <GoogleMap defaultZoom={13} defaultCenter={{ lat, lng }}>
+        <Marker position={{ lat, lng }} />
     </GoogleMap>
 ))

@@ -10,6 +10,8 @@ export const resolver: ResolverMap = {
                 description,
                 organizer,
                 location,
+                lat,
+                lng,
                 startDate,
                 endDate,
                 photo,
@@ -27,6 +29,12 @@ export const resolver: ResolverMap = {
             }
             if (location) {
                 await Event.update(id, { location })
+            }
+            if (lat) {
+                await Event.update(id, { lat })
+            }
+            if (lng) {
+                await Event.update(id, { lng })
             }
             if (startDate) {
                 await Event.update(id, { startDate })

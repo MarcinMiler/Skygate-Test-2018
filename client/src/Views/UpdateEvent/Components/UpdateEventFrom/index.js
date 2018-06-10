@@ -5,6 +5,10 @@ import { getEvent } from '../../../../graphql/event'
 
 import { withSpinner } from '../../../../Components/withSpinner'
 import UpdateEventForm from './UpdateEventForm'
+import {
+    GoogleAutocomplete,
+    geoCode
+} from '../../../../Components/GoogleAutocomplete'
 
 class UpdateEventFormContainer extends Component {
     state = {
@@ -17,13 +21,14 @@ class UpdateEventFormContainer extends Component {
         endDate: '',
         endTime: '',
         location: '',
+        lat: null,
+        lng: null,
         photo: '',
         called: 0
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
         if (prevState.called === 0) {
-            console.log('called')
             return {
                 title: nextProps.data.event.title,
                 description: nextProps.data.event.description,
@@ -56,20 +61,46 @@ class UpdateEventFormContainer extends Component {
                 endDate: this.state.endDate,
                 endTime: this.state.endTime,
                 location: this.state.location,
+                lat: this.state.lat,
+                lng: this.state.lng,
                 photo: this.state.photo
             }
         })
-        console.log(response.data.updateEvent.id)
         this.props.history.push('/event/' + response.data.updateEvent.id)
+    }
+
+    getLatLng = async address => {
+        const data = await geoCode(address)
+
+        if (data[0]) {
+            this.setState(() => ({
+                lat: data[0].geometry.location.lat(),
+                lng: data[0].geometry.location.lng()
+            }))
+        }
     }
 
     render() {
         return (
-            <UpdateEventForm
-                updateEvent={this.updateEvent}
-                changeState={this.handleChangeState}
-                state={this.state}
-            />
+            <GoogleAutocomplete
+                onChange={val => this.handleChangeState('location', val)}
+                onBlur={val => this.getLatLng(val)}
+            >
+                {({
+                    suggestions,
+                    getSearchInputProps,
+                    getSuggestionItemProps
+                }) => (
+                    <UpdateEventForm
+                        updateEvent={this.updateEvent}
+                        changeState={this.handleChangeState}
+                        state={this.state}
+                        suggestions={suggestions}
+                        getSearchInputProps={getSearchInputProps}
+                        getSuggestionItemProps={getSuggestionItemProps}
+                    />
+                )}
+            </GoogleAutocomplete>
         )
     }
 }

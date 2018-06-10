@@ -19,9 +19,9 @@ class AddEventFormContainer extends Component {
         endDate: '',
         endTime: '',
         location: '',
-        photo: '',
         lat: null,
-        lng: null
+        lng: null,
+        photo: ''
     }
 
     handleChangeState = (key, value) => this.setState({ [key]: value })
@@ -36,6 +36,8 @@ class AddEventFormContainer extends Component {
                 startDate: this.state.startDate + ' ' + this.state.startTime,
                 endDate: this.state.endDate + ' ' + this.state.endTime,
                 location: this.state.location,
+                lat: this.state.lat,
+                lng: this.state.lng,
                 photo: this.state.photo
             }
         })
@@ -54,6 +56,7 @@ class AddEventFormContainer extends Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <GoogleAutocomplete
                 onChange={val => this.handleChangeState('location', val)}

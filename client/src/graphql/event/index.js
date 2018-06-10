@@ -9,6 +9,8 @@ const eventQuery = gql`
             description
             organizer
             location
+            lat
+            lng
             startDate
             endDate
             photo

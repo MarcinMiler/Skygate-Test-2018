@@ -8,6 +8,8 @@ type Event {
     description: String!
     organizer: String!
     location: String!
+    lat: Float
+    lng: Float
     startDate: String!
     endDate: String!
     photo: String!
