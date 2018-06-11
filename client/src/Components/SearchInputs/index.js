@@ -55,8 +55,9 @@ export const SingleSearchInput = ({
 )
 
 export const DoubleSearchInput = ({
-    titleChange,
     titleSuggestions,
+    getSearchTitleInputProps,
+    getSuggestionTitleItemProps,
     locationSuggestions,
     getSearchInputProps,
     getSuggestionItemProps
@@ -70,15 +71,18 @@ export const DoubleSearchInput = ({
             <InputContainer>
                 <StyledSearchInput
                     placeholder="Search by title..."
-                    onChange={e =>
-                        titleChange ? titleChange(e.target.value) : null
-                    }
+                    {...getSearchTitleInputProps()}
                 />
 
                 {titleSuggestions ? (
                     <SugesstionWrapper>
                         {titleSuggestions.map(s => (
-                            <Sugesstion key={s.id}>{s.description}</Sugesstion>
+                            <Sugesstion
+                                key={s.id}
+                                {...getSuggestionTitleItemProps(s)}
+                            >
+                                {s.title}
+                            </Sugesstion>
                         ))}
                     </SugesstionWrapper>
                 ) : (
