@@ -39,6 +39,8 @@ class UpdateEventFormContainer extends Component {
                 endDate: nextProps.data.event.endDate,
                 endTime: nextProps.data.event.endTime,
                 location: nextProps.data.event.location,
+                lat: nextProps.data.event.lat,
+                lng: nextProps.data.event.lng,
                 photo: nextProps.data.event.photo,
                 called: 1
             }
@@ -83,8 +85,10 @@ class UpdateEventFormContainer extends Component {
     render() {
         return (
             <GoogleAutocomplete
-                onChange={val => this.handleChangeState('location', val)}
-                onBlur={val => this.getLatLng(val)}
+                onChange={val => {
+                    this.handleChangeState('location', val.description)
+                    this.getLatLng(val.description)
+                }}
             >
                 {({
                     suggestions,

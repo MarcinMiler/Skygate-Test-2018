@@ -66,7 +66,6 @@ export class GoogleAutocomplete extends Component {
         if (!this.mouseOnSuggestion) {
             this.clearSuggestions()
         }
-        this.props.onBlur && this.props.onBlur(this.state.inputValue)
     }
 
     suggestionClick = suggestion => {

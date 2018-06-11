@@ -59,8 +59,10 @@ class AddEventFormContainer extends Component {
         console.log(this.state)
         return (
             <GoogleAutocomplete
-                onChange={val => this.handleChangeState('location', val)}
-                onBlur={val => this.getLatLng(val)}
+                onChange={val => {
+                    this.handleChangeState('location', val.description)
+                    this.getLatLng(val.description)
+                }}
             >
                 {({
                     suggestions,

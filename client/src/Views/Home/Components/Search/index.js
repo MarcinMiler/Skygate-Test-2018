@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { DoubleSearchInput } from '../../../../Components/SearchInputs'
+import { TitleAutocomplete } from '../../../../Components/TitleAutocomplete'
 import { GoogleAutocomplete } from '../../../../Components/GoogleAutocomplete'
 
 import { Wrapper } from './style'
@@ -12,19 +13,36 @@ class Search extends Component {
             <Wrapper>
                 <Title>Find your next experience</Title>
 
-                <GoogleAutocomplete>
+                <TitleAutocomplete>
                     {({
-                        suggestions,
-                        getSearchInputProps,
-                        getSuggestionItemProps
+                        titleSuggestions,
+                        getSearchTitleInputProps,
+                        getSuggestionTitleItemProps
                     }) => (
-                        <DoubleSearchInput
-                            locationSuggestions={suggestions}
-                            getSearchInputProps={getSearchInputProps}
-                            getSuggestionItemProps={getSuggestionItemProps}
-                        />
+                        <GoogleAutocomplete>
+                            {({
+                                suggestions,
+                                getSearchInputProps,
+                                getSuggestionItemProps
+                            }) => (
+                                <DoubleSearchInput
+                                    titleSuggestions={titleSuggestions}
+                                    getSearchTitleInputProps={
+                                        getSearchTitleInputProps
+                                    }
+                                    getSuggestionTitleItemProps={
+                                        getSuggestionTitleItemProps
+                                    }
+                                    locationSuggestions={suggestions}
+                                    getSearchInputProps={getSearchInputProps}
+                                    getSuggestionItemProps={
+                                        getSuggestionItemProps
+                                    }
+                                />
+                            )}
+                        </GoogleAutocomplete>
                     )}
-                </GoogleAutocomplete>
+                </TitleAutocomplete>
             </Wrapper>
         )
     }
