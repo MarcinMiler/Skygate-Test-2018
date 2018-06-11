@@ -7,7 +7,7 @@ import { TitleAutocomplete } from '../../../../Components/TitleAutocomplete'
 
 const Search = ({ changeState }) => (
     <SearchWrapper>
-        <TitleAutocomplete>
+        <TitleAutocomplete onSuggestionClick={val => changeState('title', val)}>
             {({
                 titleSuggestions,
                 getSearchTitleInputProps,

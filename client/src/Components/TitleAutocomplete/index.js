@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import { client } from '../../apollo'
 import gql from 'graphql-tag'
 import debounce from 'lodash.debounce'
@@ -39,6 +39,9 @@ export class TitleAutocomplete extends Component {
     clearSuggetions = () => this.setState(() => ({ suggestions: null }))
 
     suggestionClick = suggestion => {
+        this.props.onSuggestionClick &&
+            this.props.onSuggestionClick(suggestion.title)
+
         this.setState(() => ({ inputValue: suggestion.title }))
         this.clearSuggetions()
     }
@@ -60,6 +63,7 @@ export class TitleAutocomplete extends Component {
     })
 
     render() {
+        console.log(this.state)
         return this.props.children({
             titleSuggestions: this.state.suggestions,
             getSearchTitleInputProps: this.getSearchInputProps,

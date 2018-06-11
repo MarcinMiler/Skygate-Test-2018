@@ -11,7 +11,8 @@ class ExploreEvents extends Component {
         location: {
             description: '',
             terms: []
-        }
+        },
+        title: ''
     }
 
     handleChangeState = (key, value) => this.setState(() => ({ [key]: value }))

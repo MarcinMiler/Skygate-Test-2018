@@ -21,6 +21,7 @@ const EventsList = ({ data: { events }, state }) => (
 
                 return true
             })
+            .filter(event => event.title.includes(state.title))
             .map(event => <EventItem key={event.id} event={event} />)}
     </EventsListWrapper>
 )
