@@ -7,14 +7,14 @@ import { TitleAutocomplete } from '../../../../Components/TitleAutocomplete'
 
 const Search = ({ changeState }) => (
     <SearchWrapper>
-        <TitleAutocomplete onSuggestionClick={val => changeState('title', val)}>
+        <TitleAutocomplete onChange={val => changeState('title', val)}>
             {({
                 titleSuggestions,
                 getSearchTitleInputProps,
                 getSuggestionTitleItemProps
             }) => (
                 <GoogleAutocomplete
-                    onSuggestionClick={val => changeState('location', val)}
+                    onChange={val => changeState('location', val)}
                 >
                     {({
                         suggestions,

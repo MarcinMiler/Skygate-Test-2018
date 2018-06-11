@@ -14,8 +14,7 @@ export const geoCode = address => {
 export class GoogleAutocomplete extends Component {
     state = {
         suggestions: null,
-        inputValue: '',
-        terms: []
+        inputValue: ''
     }
 
     componentDidMount() {
@@ -52,7 +51,13 @@ export class GoogleAutocomplete extends Component {
     }
 
     handleInputChange = value => {
-        this.onChange(value)
+        if (value === '') {
+            this.clearSuggestions()
+            this.props.onChange({
+                description: '',
+                terms: []
+            })
+        }
         this.setState(() => ({ inputValue: value }))
         this.debounce()
     }
@@ -65,8 +70,7 @@ export class GoogleAutocomplete extends Component {
     }
 
     suggestionClick = suggestion => {
-        this.onChange(suggestion.description)
-        this.props.onSuggestionClick && this.props.onSuggestionClick(suggestion)
+        this.props.onChange && this.props.onChange(suggestion)
 
         this.setState(() => ({ inputValue: suggestion.description }))
         this.clearSuggestions()

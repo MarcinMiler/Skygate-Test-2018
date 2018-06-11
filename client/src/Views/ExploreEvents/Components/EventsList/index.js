@@ -21,7 +21,9 @@ const EventsList = ({ data: { events }, state }) => (
 
                 return true
             })
-            .filter(event => event.title.includes(state.title))
+            .filter(event =>
+                event.title.toLowerCase().includes(state.title.toLowerCase())
+            )
             .map(event => <EventItem key={event.id} event={event} />)}
     </EventsListWrapper>
 )

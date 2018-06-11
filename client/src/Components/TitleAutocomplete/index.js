@@ -14,22 +14,32 @@ export class TitleAutocomplete extends Component {
     }
 
     fetchPredictions = async () => {
-        const data = await client.query({
-            query: gql`
-                {
-                    autocomplete(pattern: "${this.state.inputValue}") {
-                        id
-                        title
+        if (this.state.inputValue.length > 1) {
+            const data = await client.query({
+                query: gql`
+                    {
+                        autocomplete(pattern: "${this.state.inputValue}") {
+                            id
+                            title
+                        }
                     }
-                }
-            `
-        })
-        this.setState(() => ({ suggestions: data.data.autocomplete }))
+                `
+            })
+            this.setState(() => ({ suggestions: data.data.autocomplete }))
+        }
     }
 
     handleInputChange = value => {
-        this.setState(() => ({ inputValue: value }))
+        if (value === '') {
+            this.clearSuggetions()
+        }
+        this.onChange(value)
+        this.setState({ inputValue: value })
         this.debounce()
+    }
+
+    onChange = value => {
+        this.props.onChange && this.props.onChange(value)
     }
 
     handleInputOnBlur = () => {
@@ -39,8 +49,7 @@ export class TitleAutocomplete extends Component {
     clearSuggetions = () => this.setState(() => ({ suggestions: null }))
 
     suggestionClick = suggestion => {
-        this.props.onSuggestionClick &&
-            this.props.onSuggestionClick(suggestion.title)
+        this.onChange(suggestion.title)
 
         this.setState(() => ({ inputValue: suggestion.title }))
         this.clearSuggetions()
@@ -63,7 +72,6 @@ export class TitleAutocomplete extends Component {
     })
 
     render() {
-        console.log(this.state)
         return this.props.children({
             titleSuggestions: this.state.suggestions,
             getSearchTitleInputProps: this.getSearchInputProps,

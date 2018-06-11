@@ -18,7 +18,6 @@ class ExploreEvents extends Component {
     handleChangeState = (key, value) => this.setState(() => ({ [key]: value }))
 
     render() {
-        console.log(this.state)
         return (
             <Container>
                 <Search changeState={this.handleChangeState} />
