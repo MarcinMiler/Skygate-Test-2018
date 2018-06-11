@@ -2,10 +2,21 @@ import React from 'react'
 
 import { DoubleSearchInput } from '../../../../Components/SearchInputs'
 import { SearchWrapper } from './style'
+import { GoogleAutocomplete } from '../../../../Components/GoogleAutocomplete'
 
-const Search = () => (
+const Search = ({ changeState }) => (
     <SearchWrapper>
-        <DoubleSearchInput />
+        <GoogleAutocomplete
+            onSuggestionClick={val => changeState('location', val)}
+        >
+            {({ suggestions, getSearchInputProps, getSuggestionItemProps }) => (
+                <DoubleSearchInput
+                    locationSuggestions={suggestions}
+                    getSearchInputProps={getSearchInputProps}
+                    getSuggestionItemProps={getSuggestionItemProps}
+                />
+            )}
+        </GoogleAutocomplete>
     </SearchWrapper>
 )
 

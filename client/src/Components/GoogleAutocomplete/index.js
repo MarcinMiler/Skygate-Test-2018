@@ -14,7 +14,8 @@ export const geoCode = address => {
 export class GoogleAutocomplete extends Component {
     state = {
         suggestions: null,
-        inputValue: ''
+        inputValue: '',
+        terms: []
     }
 
     componentDidMount() {
@@ -37,7 +38,8 @@ export class GoogleAutocomplete extends Component {
             this.setState({
                 suggestions: predictions.map((prediction, i) => ({
                     id: prediction.id,
-                    description: prediction.description
+                    description: prediction.description,
+                    terms: prediction.terms
                 }))
             })
         }
@@ -46,9 +48,7 @@ export class GoogleAutocomplete extends Component {
     clearSuggestions = () => this.setState(() => ({ suggestions: null }))
 
     onChange = value => {
-        if (this.props.onChange) {
-            this.props.onChange(value)
-        }
+        this.props.onChange && this.props.onChange(value)
     }
 
     handleInputChange = value => {
@@ -61,14 +61,14 @@ export class GoogleAutocomplete extends Component {
         if (!this.mouseOnSuggestion) {
             this.clearSuggestions()
         }
-        if (this.props.onBlur) {
-            this.props.onBlur(this.state.inputValue)
-        }
+        this.props.onBlur && this.props.onBlur(this.state.inputValue)
     }
 
-    suggestionClick = value => {
-        this.onChange(value)
-        this.setState(() => ({ inputValue: value }))
+    suggestionClick = suggestion => {
+        this.onChange(suggestion.description)
+        this.props.onSuggestionClick && this.props.onSuggestionClick(suggestion)
+
+        this.setState(() => ({ inputValue: suggestion.description }))
         this.clearSuggestions()
     }
 
@@ -83,7 +83,7 @@ export class GoogleAutocomplete extends Component {
     })
 
     getSuggestionItemProps = suggestion => ({
-        onClick: () => this.suggestionClick(suggestion.description),
+        onClick: () => this.suggestionClick(suggestion),
         onMouseEnter: () => this.suggestionMouseEnter(),
         onMouseLeave: () => this.suggestionMouseLeave()
     })
