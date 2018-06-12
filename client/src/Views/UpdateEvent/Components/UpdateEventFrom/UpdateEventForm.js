@@ -27,14 +27,19 @@ const UpdateEventForm = ({
             label="Description"
             value={state.description}
             textArea
+            onChange={val => changeState('description', val)}
         />
 
-        <InputWithLabel label="Name of the organizer" value={state.organizer} />
+        <InputWithLabel
+            label="Name of the organizer"
+            value={state.organizer}
+            onChange={val => changeState('organizer', val)}
+        />
 
         <Dropdown
             name="Select category"
             options={options}
-            onChange={val => console.log(val)}
+            onChange={val => changeState('category', val)}
         />
 
         <InputRow>
@@ -43,12 +48,14 @@ const UpdateEventForm = ({
                 type="date"
                 autoWidth
                 value={state.startDate}
+                onChange={val => changeState('startDate', val)}
             />
             <InputWithLabel
                 label="Start time"
                 type="time"
                 autoWidth
                 value={state.startTime}
+                onChange={val => changeState('startTime', val)}
             />
 
             <InputWithLabel
@@ -56,12 +63,14 @@ const UpdateEventForm = ({
                 type="date"
                 autoWidth
                 value={state.endDate}
+                onChange={val => changeState('endDate', val)}
             />
             <InputWithLabel
                 label="End time"
                 type="time"
                 autoWidth
                 value={state.endTime}
+                onChange={val => changeState('endTime', val)}
             />
         </InputRow>
 
@@ -72,7 +81,11 @@ const UpdateEventForm = ({
             getSuggestionItemProps={getSuggestionItemProps}
         />
 
-        <InputWithLabel label="Photo (url)" value={state.photo} />
+        <InputWithLabel
+            label="Photo (url)"
+            value={state.photo}
+            onChange={val => changeState('photo', val)}
+        />
 
         <WrapButton>
             <PrimaryButton
