@@ -15,18 +15,24 @@ class CountDown extends Component {
     }
 
     componentDidMount() {
+        this.calculateCountDown()
         this.interval = setInterval(this.calculateCountDown, 1000)
     }
 
     componentWillUnmount() {
-        clearInterval(this.interval)
+        this.stopCountDown()
     }
 
-    calculateCountDown = () => {
+    calculateCountDown = date => {
         const dateToCount = new Date(this.props.date).getTime()
         const now = new Date().getTime()
 
         const distance = dateToCount - now
+
+        if (distance <= 0) {
+            this.stopCountDown()
+            return false
+        }
 
         const days = Math.floor(distance / (1000 * 60 * 60 * 24))
         const hours = Math.floor(
@@ -42,6 +48,8 @@ class CountDown extends Component {
             seconds
         }))
     }
+
+    stopCountDown = () => clearInterval(this.interval)
 
     addZeroBefore = value => (String(value).length < 2 ? '0' + value : value)
 
