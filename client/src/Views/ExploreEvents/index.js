@@ -12,7 +12,10 @@ class ExploreEvents extends Component {
             description: '',
             terms: []
         },
-        title: ''
+        title: '',
+        category: 'All',
+        from: null,
+        to: null
     }
 
     handleChangeState = (key, value) => this.setState(() => ({ [key]: value }))
@@ -22,7 +25,7 @@ class ExploreEvents extends Component {
             <Container>
                 <Search changeState={this.handleChangeState} />
                 <Row>
-                    <Filter />
+                    <Filter changeState={this.handleChangeState} />
                     <EventsList state={this.state} />
                 </Row>
             </Container>
