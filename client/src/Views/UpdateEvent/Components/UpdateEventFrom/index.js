@@ -3,10 +3,9 @@ import { compose } from 'react-apollo'
 import { updateEvent } from '../../../../graphql/updateEvent'
 import { getEvent } from '../../../../graphql/event'
 
-import { withSpinner } from '../../../../Components/withSpinner'
+import withSpinner from '../../../../Components/withSpinner'
 import UpdateEventForm from './UpdateEventForm'
-import {
-    GoogleAutocomplete,
+import GoogleAutocomplete, {
     geoCode
 } from '../../../../Components/GoogleAutocomplete'
 

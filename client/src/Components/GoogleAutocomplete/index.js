@@ -11,7 +11,7 @@ export const geoCode = address => {
     })
 }
 
-export class GoogleAutocomplete extends Component {
+class GoogleAutocomplete extends Component {
     state = {
         suggestions: null,
         inputValue: ''
@@ -99,3 +99,5 @@ export class GoogleAutocomplete extends Component {
         })
     }
 }
+
+export default GoogleAutocomplete

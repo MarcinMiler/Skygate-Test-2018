@@ -3,7 +3,7 @@ import { client } from '../../apollo'
 import gql from 'graphql-tag'
 import debounce from 'lodash.debounce'
 
-export class TitleAutocomplete extends Component {
+class TitleAutocomplete extends Component {
     state = {
         suggestions: null,
         inputValue: ''
@@ -79,3 +79,5 @@ export class TitleAutocomplete extends Component {
         })
     }
 }
+
+export default TitleAutocomplete

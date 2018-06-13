@@ -8,9 +8,9 @@ import {
     CalendarIcon,
     GoogleMapContainer
 } from './style'
-import { Map } from '../GoogleMap'
+import Map from '../GoogleMap'
 
-export class LocationInfo extends Component {
+class LocationInfo extends Component {
     state = {
         distance: 0
     }
@@ -85,3 +85,5 @@ export class LocationInfo extends Component {
         )
     }
 }
+
+export default LocationInfo

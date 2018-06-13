@@ -2,7 +2,7 @@ import React from 'react'
 import { compose, withProps } from 'recompose'
 import { GoogleMap, Marker, withGoogleMap } from 'react-google-maps'
 
-export const Map = compose(
+const Map = compose(
     withProps({
         googleMapURL:
             'https://maps.googleapis.com/maps/api/js?key=AIzaSyBmaharYcjDwvAb0IS6uVDEk43qzYxXsfg&v=3.exp&libraries=geometry,drawing,places',
@@ -16,3 +16,5 @@ export const Map = compose(
         <Marker position={{ lat, lng }} />
     </GoogleMap>
 ))
+
+export default Map

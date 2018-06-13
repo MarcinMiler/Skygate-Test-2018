@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 import { DoubleSearchInput } from '../../../../Components/SearchInputs'
-import { TitleAutocomplete } from '../../../../Components/TitleAutocomplete'
-import { GoogleAutocomplete } from '../../../../Components/GoogleAutocomplete'
+import TitleAutocomplete from '../../../../Components/TitleAutocomplete'
+import GoogleAutocomplete from '../../../../Components/GoogleAutocomplete'
 
 import { Wrapper } from './style'
 import Title from '../../../../Components/Title'

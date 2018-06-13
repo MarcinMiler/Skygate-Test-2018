@@ -3,8 +3,7 @@ import { compose } from 'react-apollo'
 import { createEvent } from '../../../../graphql/createEvent'
 
 import AddEventForm from './AddEventForm'
-import {
-    GoogleAutocomplete,
+import GoogleAutocomplete, {
     geoCode
 } from '../../../../Components/GoogleAutocomplete'
 

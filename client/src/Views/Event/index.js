@@ -2,10 +2,10 @@ import React from 'react'
 import { compose } from 'react-apollo'
 import { getEvent } from '../../graphql/event'
 
-import { withSpinner } from '../../Components/withSpinner'
+import withSpinner from '../../Components/withSpinner'
 import Container from '../../Components/Container'
 import EventDetails from './Components/EventDetails'
-import { LocationInfo } from './Components/LocationInfo'
+import LocationInfo from './Components/LocationInfo'
 import ButtonsContainer from './Components/Buttons'
 
 const Event = ({
