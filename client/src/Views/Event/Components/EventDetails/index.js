@@ -1,13 +1,13 @@
 import React from 'react'
+
+import Title from '../../../../Components/Title'
+import CountDown from '../CountDown'
 import {
     EventDetailsWrapper,
     EventImage,
     EventContent,
     EventDescription
 } from './style'
-
-import Title from '../../../../Components/Title'
-import CountDown from '../CountDown'
 
 const EventDetails = ({ event: { title, description, startDate } }) => (
     <EventDetailsWrapper>

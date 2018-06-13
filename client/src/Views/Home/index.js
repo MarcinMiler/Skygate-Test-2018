@@ -1,9 +1,9 @@
 import React from 'react'
 
 import Container from '../../Components/Container'
+import Subtitle from '../../Components/Subtitle'
 import Banner from './Components/Banner'
 import Search from './Components/Search'
-import Subtitle from '../../Components/Subtitle'
 import Cards from './Components/Cards'
 import Categories from './Components/Categories'
 

@@ -1,4 +1,6 @@
 import React from 'react'
+
+import img from '../../../../Images/happy.jpeg'
 import {
     Wrapper,
     Image,
@@ -7,7 +9,7 @@ import {
     CardSubtitle,
     Category
 } from './style'
-import img from '../../../../Images/happy.jpeg'
+
 const Card = () => (
     <Wrapper>
         <Image src={img} />

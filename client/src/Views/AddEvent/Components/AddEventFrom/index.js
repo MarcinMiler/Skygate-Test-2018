@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { compose } from 'react-apollo'
 import { createEvent } from '../../../../graphql/createEvent'
 
-import AddEventForm from './AddEventForm'
 import GoogleAutocomplete, {
     geoCode
 } from '../../../../Components/GoogleAutocomplete'
+import AddEventForm from './AddEventForm'
 
 class AddEventFormContainer extends Component {
     state = {

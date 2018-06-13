@@ -1,7 +1,8 @@
 import React from 'react'
-import { Wrapper, Center } from './style'
-import Card from '../Card'
+
 import { PrimaryButton } from '../../../../Components/Buttons'
+import Card from '../Card'
+import { Wrapper, Center } from './style'
 
 const Cards = () => (
     <Wrapper>

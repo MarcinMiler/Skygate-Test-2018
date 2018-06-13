@@ -1,4 +1,6 @@
 import React from 'react'
+
+import { PrimaryButton } from '../../../../Components/Buttons'
 import {
     ModalWrapper,
     ModalContent,
@@ -6,7 +8,6 @@ import {
     ModalButtons,
     Row
 } from './style'
-import { PrimaryButton } from '../../../../Components/Buttons'
 
 const Modal = ({ isOpen, toggleModal, deleteEvent }) =>
     isOpen ? (

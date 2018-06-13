@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { DoubleSearchInput } from '../../../../Components/SearchInputs'
-import { SearchWrapper } from './style'
 import GoogleAutocomplete from '../../../../Components/GoogleAutocomplete'
 import TitleAutocomplete from '../../../../Components/TitleAutocomplete'
+import { SearchWrapper } from './style'
 
 const Search = ({ changeState }) => (
     <SearchWrapper>

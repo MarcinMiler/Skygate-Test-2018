@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+
+import Map from '../GoogleMap'
 import {
     LocationInfoWrapper,
     LocationInfoTitle,
@@ -8,7 +10,6 @@ import {
     CalendarIcon,
     GoogleMapContainer
 } from './style'
-import Map from '../GoogleMap'
 
 class LocationInfo extends Component {
     state = {

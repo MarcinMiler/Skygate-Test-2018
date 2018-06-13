@@ -2,8 +2,8 @@ import React from 'react'
 
 import { InputWithLabel } from '../../../../Components/Inputs'
 import { SingleSearchInput } from '../../../../Components/SearchInputs'
-import Dropdown from '../../../../Components/Dropdown'
 import { PrimaryButton } from '../../../../Components/Buttons'
+import Dropdown from '../../../../Components/Dropdown'
 import { UpdateEventFormWrapper, InputRow, WrapButton } from './style'
 
 const options = ['Music', 'Networking', 'Food', 'Sport', 'Parties']
