@@ -11,11 +11,11 @@ const EventsList = ({ data: { events }, state }) => (
         {events
             //Searching by location
             .filter(event => {
-                const { terms } = state.location
-                if (terms.length === 0) return true
+                const { locationTerms } = state
+                if (locationTerms.length === 0) return true
 
-                for (let i = 0; i < terms.length; i++) {
-                    const test = event.location.includes(terms[i].value)
+                for (let i = 0; i < locationTerms.length; i++) {
+                    const test = event.location.includes(locationTerms[i].value)
                     if (!test) return false
                 }
 

@@ -5,8 +5,7 @@ import debounce from 'lodash.debounce'
 
 class TitleAutocomplete extends Component {
     state = {
-        suggestions: null,
-        inputValue: ''
+        suggestions: null
     }
 
     componentDidMount() {
@@ -14,11 +13,11 @@ class TitleAutocomplete extends Component {
     }
 
     fetchPredictions = async () => {
-        if (this.state.inputValue.length > 1) {
+        if (this.props.title.length > 1) {
             const data = await client.query({
                 query: gql`
                     {
-                        autocomplete(pattern: "${this.state.inputValue}") {
+                        autocomplete(pattern: "${this.props.title}") {
                             id
                             title
                         }
@@ -33,13 +32,8 @@ class TitleAutocomplete extends Component {
         if (value === '') {
             this.clearSuggetions()
         }
-        this.onChange(value)
-        this.setState({ inputValue: value })
+        this.props.changeTitle('title', value)
         this.debounce()
-    }
-
-    onChange = value => {
-        this.props.onChange && this.props.onChange(value)
     }
 
     handleInputOnBlur = () => {
@@ -49,9 +43,7 @@ class TitleAutocomplete extends Component {
     clearSuggetions = () => this.setState(() => ({ suggestions: null }))
 
     suggestionClick = suggestion => {
-        this.onChange(suggestion.title)
-
-        this.setState(() => ({ inputValue: suggestion.title }))
+        this.props.changeTitle('title', suggestion.title)
         this.clearSuggetions()
     }
 
@@ -62,7 +54,7 @@ class TitleAutocomplete extends Component {
     getSearchInputProps = () => ({
         onChange: e => this.handleInputChange(e.target.value),
         onBlur: () => this.handleInputOnBlur(),
-        value: this.state.inputValue
+        value: this.props.title
     })
 
     getSuggestionItemProps = suggestion => ({

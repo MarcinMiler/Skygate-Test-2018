@@ -13,8 +13,7 @@ export const geoCode = address => {
 
 class GoogleAutocomplete extends Component {
     state = {
-        suggestions: null,
-        inputValue: ''
+        suggestions: null
     }
 
     componentDidMount() {
@@ -23,10 +22,10 @@ class GoogleAutocomplete extends Component {
     }
 
     fetchPredictions = () => {
-        const { inputValue } = this.state
-        if (inputValue.length) {
+        const { location } = this.props
+        if (location.length) {
             this.autoComplete.getPlacePredictions(
-                { input: inputValue },
+                { input: location },
                 this.autoCompleteCallback
             )
         }
@@ -46,19 +45,14 @@ class GoogleAutocomplete extends Component {
 
     clearSuggestions = () => this.setState(() => ({ suggestions: null }))
 
-    onChange = value => {
-        this.props.onChange && this.props.onChange(value)
-    }
-
     handleInputChange = value => {
         if (value === '') {
             this.clearSuggestions()
-            this.props.onChange({
-                description: '',
-                terms: []
-            })
+            this.props.changeLocation('location', '')
+            this.props.changeLocation('locationTerms', [])
         }
-        this.setState(() => ({ inputValue: value }))
+
+        this.props.changeLocation('location', value)
         this.debounce()
     }
 
@@ -69,9 +63,9 @@ class GoogleAutocomplete extends Component {
     }
 
     suggestionClick = suggestion => {
-        this.props.onChange && this.props.onChange(suggestion)
+        this.props.changeLocation('location', suggestion.description)
+        this.props.changeLocation('locationTerms', suggestion.terms)
 
-        this.setState(() => ({ inputValue: suggestion.description }))
         this.clearSuggestions()
     }
 
@@ -82,7 +76,7 @@ class GoogleAutocomplete extends Component {
     getSearchInputProps = () => ({
         onChange: e => this.handleInputChange(e.target.value),
         onBlur: () => this.handleInputOnBlur(),
-        value: this.state.inputValue
+        value: this.props.location
     })
 
     getSuggestionItemProps = suggestion => ({

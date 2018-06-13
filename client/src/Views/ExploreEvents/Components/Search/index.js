@@ -5,16 +5,17 @@ import GoogleAutocomplete from '../../../../Components/GoogleAutocomplete'
 import TitleAutocomplete from '../../../../Components/TitleAutocomplete'
 import { SearchWrapper } from './style'
 
-const Search = ({ changeState }) => (
+const Search = ({ changeState, state }) => (
     <SearchWrapper>
-        <TitleAutocomplete onChange={val => changeState('title', val)}>
+        <TitleAutocomplete changeTitle={changeState} title={state.title}>
             {({
                 titleSuggestions,
                 getSearchTitleInputProps,
                 getSuggestionTitleItemProps
             }) => (
                 <GoogleAutocomplete
-                    onChange={val => changeState('location', val)}
+                    changeLocation={state.changeState}
+                    location={state.location}
                 >
                     {({
                         suggestions,

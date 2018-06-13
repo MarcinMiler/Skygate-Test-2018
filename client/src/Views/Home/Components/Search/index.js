@@ -16,7 +16,8 @@ class Search extends Component {
                 <SearchContext.Consumer>
                     {state => (
                         <TitleAutocomplete
-                            onChange={val => state.changeState('title', val)}
+                            changeTitle={state.changeState}
+                            title={state.title}
                         >
                             {({
                                 titleSuggestions,
@@ -24,9 +25,8 @@ class Search extends Component {
                                 getSuggestionTitleItemProps
                             }) => (
                                 <GoogleAutocomplete
-                                    onChange={val =>
-                                        state.changeState('location', val)
-                                    }
+                                    changeLocation={state.changeState}
+                                    location={state.location}
                                 >
                                     {({
                                         suggestions,

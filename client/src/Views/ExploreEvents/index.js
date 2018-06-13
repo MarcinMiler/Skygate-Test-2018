@@ -13,7 +13,7 @@ class ExploreEvents extends Component {
             <SearchContext.Consumer>
                 {state => (
                     <Container>
-                        <Search changeState={state.changeState} />
+                        <Search changeState={state.changeState} state={state} />
                         <Row>
                             <Filter changeState={state.changeState} />
                             <EventsList state={state} />

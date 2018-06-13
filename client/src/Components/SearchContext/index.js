@@ -5,11 +5,8 @@ const SearchContext = createContext()
 class SearchContextProvider extends Component {
     state = {
         title: '',
-        location: {
-            description: '',
-            terms: []
-        },
-        title: '',
+        location: '',
+        locationTerms: [],
         category: 'All',
         from: null,
         to: null,
@@ -17,6 +14,7 @@ class SearchContextProvider extends Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <SearchContext.Provider value={this.state}>
                 {this.props.children}
