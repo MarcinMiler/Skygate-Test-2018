@@ -5,6 +5,7 @@ import TitleAutocomplete from '../../../../Components/TitleAutocomplete'
 import GoogleAutocomplete from '../../../../Components/GoogleAutocomplete'
 import Title from '../../../../Components/Title'
 import { Wrapper } from './style'
+import { SearchContext } from '../../../../Components/SearchContext'
 
 class Search extends Component {
     render() {
@@ -12,36 +13,48 @@ class Search extends Component {
             <Wrapper>
                 <Title>Find your next experience</Title>
 
-                <TitleAutocomplete>
-                    {({
-                        titleSuggestions,
-                        getSearchTitleInputProps,
-                        getSuggestionTitleItemProps
-                    }) => (
-                        <GoogleAutocomplete>
+                <SearchContext.Consumer>
+                    {state => (
+                        <TitleAutocomplete
+                            onChange={val => state.changeState('title', val)}
+                        >
                             {({
-                                suggestions,
-                                getSearchInputProps,
-                                getSuggestionItemProps
+                                titleSuggestions,
+                                getSearchTitleInputProps,
+                                getSuggestionTitleItemProps
                             }) => (
-                                <DoubleSearchInput
-                                    titleSuggestions={titleSuggestions}
-                                    getSearchTitleInputProps={
-                                        getSearchTitleInputProps
+                                <GoogleAutocomplete
+                                    onChange={val =>
+                                        state.changeState('location', val)
                                     }
-                                    getSuggestionTitleItemProps={
-                                        getSuggestionTitleItemProps
-                                    }
-                                    locationSuggestions={suggestions}
-                                    getSearchInputProps={getSearchInputProps}
-                                    getSuggestionItemProps={
+                                >
+                                    {({
+                                        suggestions,
+                                        getSearchInputProps,
                                         getSuggestionItemProps
-                                    }
-                                />
+                                    }) => (
+                                        <DoubleSearchInput
+                                            titleSuggestions={titleSuggestions}
+                                            getSearchTitleInputProps={
+                                                getSearchTitleInputProps
+                                            }
+                                            getSuggestionTitleItemProps={
+                                                getSuggestionTitleItemProps
+                                            }
+                                            locationSuggestions={suggestions}
+                                            getSearchInputProps={
+                                                getSearchInputProps
+                                            }
+                                            getSuggestionItemProps={
+                                                getSuggestionItemProps
+                                            }
+                                        />
+                                    )}
+                                </GoogleAutocomplete>
                             )}
-                        </GoogleAutocomplete>
+                        </TitleAutocomplete>
                     )}
-                </TitleAutocomplete>
+                </SearchContext.Consumer>
             </Wrapper>
         )
     }

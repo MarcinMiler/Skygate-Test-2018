@@ -5,10 +5,13 @@ import registerServiceWorker from './registerServiceWorker'
 
 import Routes from './routes'
 import { client } from './apollo'
+import { SearchContextProvider } from './Components/SearchContext'
 
 const App = () => (
     <ApolloProvider client={client}>
-        <Routes />
+        <SearchContextProvider>
+            <Routes />
+        </SearchContextProvider>
     </ApolloProvider>
 )
 
