@@ -48,11 +48,11 @@ class GoogleAutocomplete extends Component {
     handleInputChange = value => {
         if (value === '') {
             this.clearSuggestions()
-            this.props.changeLocation('location', '')
-            this.props.changeLocation('locationTerms', [])
+            this.props.changeLocation('')
+            this.props.changeTerms([])
         }
 
-        this.props.changeLocation('location', value)
+        this.props.changeLocation(value)
         this.debounce()
     }
 
@@ -63,8 +63,8 @@ class GoogleAutocomplete extends Component {
     }
 
     suggestionClick = suggestion => {
-        this.props.changeLocation('location', suggestion.description)
-        this.props.changeLocation('locationTerms', suggestion.terms)
+        this.props.changeLocation(suggestion.description)
+        this.props.changeTerms(suggestion.terms)
 
         this.clearSuggestions()
     }
@@ -73,13 +73,13 @@ class GoogleAutocomplete extends Component {
 
     suggestionMouseLeave = () => (this.mouseOnSuggestion = false)
 
-    getSearchInputProps = () => ({
+    getInputProps = () => ({
         onChange: e => this.handleInputChange(e.target.value),
         onBlur: () => this.handleInputOnBlur(),
         value: this.props.location
     })
 
-    getSuggestionItemProps = suggestion => ({
+    getSuggestionProps = suggestion => ({
         onClick: () => this.suggestionClick(suggestion),
         onMouseEnter: () => this.suggestionMouseEnter(),
         onMouseLeave: () => this.suggestionMouseLeave()
@@ -87,9 +87,11 @@ class GoogleAutocomplete extends Component {
 
     render() {
         return this.props.children({
-            suggestions: this.state.suggestions,
-            getSearchInputProps: this.getSearchInputProps,
-            getSuggestionItemProps: this.getSuggestionItemProps
+            locationProps: {
+                suggestions: this.state.suggestions,
+                getInputProps: this.getInputProps,
+                getSuggestionProps: this.getSuggestionProps
+            }
         })
     }
 }

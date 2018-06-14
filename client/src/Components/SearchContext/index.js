@@ -14,7 +14,6 @@ class SearchContextProvider extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <SearchContext.Provider value={this.state}>
                 {this.props.children}

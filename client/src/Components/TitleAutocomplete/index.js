@@ -32,7 +32,7 @@ class TitleAutocomplete extends Component {
         if (value === '') {
             this.clearSuggetions()
         }
-        this.props.changeTitle('title', value)
+        this.props.changeTitle(value)
         this.debounce()
     }
 
@@ -43,7 +43,7 @@ class TitleAutocomplete extends Component {
     clearSuggetions = () => this.setState(() => ({ suggestions: null }))
 
     suggestionClick = suggestion => {
-        this.props.changeTitle('title', suggestion.title)
+        this.props.changeTitle(suggestion.title)
         this.clearSuggetions()
     }
 
@@ -51,13 +51,13 @@ class TitleAutocomplete extends Component {
 
     suggestionMouseLeave = () => (this.mouseOnSuggestion = false)
 
-    getSearchInputProps = () => ({
+    getInputProps = () => ({
         onChange: e => this.handleInputChange(e.target.value),
         onBlur: () => this.handleInputOnBlur(),
         value: this.props.title
     })
 
-    getSuggestionItemProps = suggestion => ({
+    getSuggestionProps = suggestion => ({
         onClick: () => this.suggestionClick(suggestion),
         onMouseEnter: () => this.suggestionMouseEnter(),
         onMouseLeave: () => this.suggestionMouseLeave()
@@ -65,9 +65,11 @@ class TitleAutocomplete extends Component {
 
     render() {
         return this.props.children({
-            titleSuggestions: this.state.suggestions,
-            getSearchTitleInputProps: this.getSearchInputProps,
-            getSuggestionTitleItemProps: this.getSuggestionItemProps
+            titleProps: {
+                suggestions: this.state.suggestions,
+                getInputProps: this.getInputProps,
+                getSuggestionProps: this.getSuggestionProps
+            }
         })
     }
 }

@@ -54,14 +54,7 @@ export const SingleSearchInput = ({
     </div>
 )
 
-export const DoubleSearchInput = ({
-    titleSuggestions,
-    getSearchTitleInputProps,
-    getSuggestionTitleItemProps,
-    locationSuggestions,
-    getSearchInputProps,
-    getSuggestionItemProps
-}) => (
+export const DoubleSearchInput = ({ titleProps, locationProps }) => (
     <DoubleSearchInputWrapper>
         <WrapIcon>
             <SearchIcon />
@@ -71,15 +64,15 @@ export const DoubleSearchInput = ({
             <InputContainer>
                 <StyledSearchInput
                     placeholder="Search by title..."
-                    {...getSearchTitleInputProps()}
+                    {...titleProps.getInputProps()}
                 />
 
-                {titleSuggestions ? (
+                {titleProps.suggestions ? (
                     <SugesstionWrapper>
-                        {titleSuggestions.map(s => (
+                        {titleProps.suggestions.map(s => (
                             <Sugesstion
                                 key={s.id}
-                                {...getSuggestionTitleItemProps(s)}
+                                {...titleProps.getSuggestionProps(s)}
                             >
                                 {s.title}
                             </Sugesstion>
@@ -93,15 +86,15 @@ export const DoubleSearchInput = ({
             <InputContainer>
                 <StyledSearchInput
                     placeholder="Search by location..."
-                    {...getSearchInputProps()}
+                    {...locationProps.getInputProps()}
                 />
 
-                {locationSuggestions ? (
+                {locationProps.suggestions ? (
                     <SugesstionWrapper>
-                        {locationSuggestions.map(s => (
+                        {locationProps.suggestions.map(s => (
                             <Sugesstion
                                 key={s.id}
-                                {...getSuggestionItemProps(s)}
+                                {...locationProps.getSuggestionProps(s)}
                             >
                                 {s.description}
                             </Sugesstion>
