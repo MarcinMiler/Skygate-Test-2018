@@ -8,13 +8,7 @@ import { AddEventFormWrapper, InputRow, WrapButton } from './style'
 
 const options = ['Music', 'Networking', 'Food', 'Sport', 'Parties']
 
-const AddEventForm = ({
-    changeState,
-    createEvent,
-    suggestions,
-    getSearchInputProps,
-    getSuggestionItemProps
-}) => (
+const AddEventForm = ({ changeState, createEvent, locationProps }) => (
     <AddEventFormWrapper>
         <InputWithLabel
             label="Title"
@@ -66,12 +60,7 @@ const AddEventForm = ({
             />
         </InputRow>
 
-        <SingleSearchInput
-            label="Localization"
-            suggestions={suggestions}
-            getSearchInputProps={getSearchInputProps}
-            getSuggestionItemProps={getSuggestionItemProps}
-        />
+        <SingleSearchInput label="Localization" locationProps={locationProps} />
 
         <InputWithLabel
             label="Photo (url)"

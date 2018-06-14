@@ -14,12 +14,15 @@ const TwoAutocomplete = ({ children }) => (
                 {({ titleProps }) => (
                     <GoogleAutocomplete
                         location={state.location}
-                        changeLocation={val =>
+                        onChange={val => {
+                            if (val === '')
+                                state.changeState('locationTerms', [])
                             state.changeState('location', val)
-                        }
-                        changeTerms={val =>
-                            state.changeState('locationTerms', val)
-                        }
+                        }}
+                        onSuggestionClick={val => {
+                            state.changeState('location', val.description)
+                            state.changeState('locationTerms', val.terms)
+                        }}
                     >
                         {({ locationProps }) =>
                             children({ titleProps, locationProps })

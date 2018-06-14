@@ -48,11 +48,10 @@ class GoogleAutocomplete extends Component {
     handleInputChange = value => {
         if (value === '') {
             this.clearSuggestions()
-            this.props.changeLocation('')
-            this.props.changeTerms([])
+            this.props.onChange('')
         }
 
-        this.props.changeLocation(value)
+        this.props.onChange(value)
         this.debounce()
     }
 
@@ -63,8 +62,7 @@ class GoogleAutocomplete extends Component {
     }
 
     suggestionClick = suggestion => {
-        this.props.changeLocation(suggestion.description)
-        this.props.changeTerms(suggestion.terms)
+        this.props.onSuggestionClick(suggestion)
 
         this.clearSuggestions()
     }

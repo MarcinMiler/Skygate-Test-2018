@@ -55,24 +55,21 @@ class AddEventFormContainer extends Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <GoogleAutocomplete
-                onChange={val => {
+                location={this.state.location}
+                onChange={val => this.handleChangeState('location', val)}
+                onSuggestionClick={val => {
                     this.handleChangeState('location', val.description)
                     this.getLatLng(val.description)
                 }}
             >
-                {({
-                    suggestions,
-                    getSearchInputProps,
-                    getSuggestionItemProps
-                }) => (
+                {({ locationProps }) => (
                     <AddEventForm
                         changeState={this.handleChangeState}
                         createEvent={this.createEvent}
-                        suggestions={suggestions}
-                        getSearchInputProps={getSearchInputProps}
-                        getSuggestionItemProps={getSuggestionItemProps}
+                        locationProps={locationProps}
                     />
                 )}
             </GoogleAutocomplete>

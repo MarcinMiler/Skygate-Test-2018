@@ -16,29 +16,23 @@ import {
     GoogleImage
 } from './style'
 
-export const SingleSearchInput = ({
-    label,
-    placeholder,
-    suggestions,
-    getSearchInputProps,
-    getSuggestionItemProps
-}) => (
+export const SingleSearchInput = ({ label, placeholder, locationProps }) => (
     <div>
         <Label>{label}</Label>
 
         <SingleInputContainer>
             <StyledInputWithLabel
                 placeholder={placeholder}
-                {...getSearchInputProps()}
+                {...locationProps.getInputProps()}
             />
 
-            {suggestions ? (
+            {locationProps.suggestions ? (
                 <SugesstionWrapper>
-                    {suggestions.map(s => (
+                    {locationProps.suggestions.map(s => (
                         <Sugesstion
                             key={s.id}
                             widther
-                            {...getSuggestionItemProps(s)}
+                            {...locationProps.getSuggestionProps(s)}
                         >
                             {s.description}
                         </Sugesstion>

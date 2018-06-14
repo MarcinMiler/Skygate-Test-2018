@@ -4,7 +4,7 @@ import TwoAutocomplete from '../../../../Components/TwoAutocomplete'
 import { DoubleSearchInput } from '../../../../Components/SearchInputs'
 import { SearchWrapper } from './style'
 
-const Search = ({ changeState, state }) => (
+const Search = () => (
     <SearchWrapper>
         <TwoAutocomplete>
             {({ titleProps, locationProps }) => (

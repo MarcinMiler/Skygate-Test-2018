@@ -11,8 +11,8 @@ class ButtonsContainer extends Component {
 
     toggleModal = () => this.setState(({ isOpen }) => ({ isOpen: !isOpen }))
 
-    deleteEvent = () => {
-        this.props.deleteEvent(this.props.id)
+    deleteEvent = async () => {
+        await this.props.deleteEvent(this.props.id)
         this.props.history.push('/exploreEvents')
     }
 
