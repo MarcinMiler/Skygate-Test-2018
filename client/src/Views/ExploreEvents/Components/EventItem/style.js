@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import BackgroundImage from '../../../../Images/happy.jpeg'
 
 export const EventItemWrapper = styled.div`
     width: 100%;
@@ -18,13 +17,10 @@ export const EventItemWrapper = styled.div`
         transform: scale(1.01);
     }
 `
-export const EventImage = styled.div`
+export const EventImage = styled.img`
     width: 360px;
     height: 100%;
     border-radius: 4px;
-    background-image: url(${BackgroundImage});
-    background-size: cover;
-    background-position: center;
 `
 export const EventContent = styled.div`
     flex-grow: 1;

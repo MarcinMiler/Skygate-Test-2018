@@ -17,12 +17,11 @@ class ButtonsContainer extends Component {
     }
 
     render() {
-        const { id } = this.props
         return (
             <Buttons
                 toggleModal={this.toggleModal}
                 isOpen={this.state.isOpen}
-                id={id}
+                id={this.props.id}
                 deleteEvent={this.deleteEvent}
             />
         )

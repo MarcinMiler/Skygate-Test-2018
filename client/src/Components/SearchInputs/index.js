@@ -26,7 +26,7 @@ export const SingleSearchInput = ({ label, placeholder, locationProps }) => (
                 {...locationProps.getInputProps()}
             />
 
-            {locationProps.suggestions ? (
+            {locationProps.suggestions && (
                 <SugesstionWrapper>
                     {locationProps.suggestions.map(s => (
                         <Sugesstion
@@ -41,8 +41,6 @@ export const SingleSearchInput = ({ label, placeholder, locationProps }) => (
                         <GoogleImage />
                     </PoweredByGoogle>
                 </SugesstionWrapper>
-            ) : (
-                <div />
             )}
         </SingleInputContainer>
     </div>
@@ -61,7 +59,7 @@ export const DoubleSearchInput = ({ titleProps, locationProps }) => (
                     {...titleProps.getInputProps()}
                 />
 
-                {titleProps.suggestions ? (
+                {titleProps.suggestions && (
                     <SugesstionWrapper>
                         {titleProps.suggestions.map(s => (
                             <Sugesstion
@@ -72,8 +70,6 @@ export const DoubleSearchInput = ({ titleProps, locationProps }) => (
                             </Sugesstion>
                         ))}
                     </SugesstionWrapper>
-                ) : (
-                    <div />
                 )}
             </InputContainer>
 
@@ -83,7 +79,7 @@ export const DoubleSearchInput = ({ titleProps, locationProps }) => (
                     {...locationProps.getInputProps()}
                 />
 
-                {locationProps.suggestions ? (
+                {locationProps.suggestions && (
                     <SugesstionWrapper>
                         {locationProps.suggestions.map(s => (
                             <Sugesstion
@@ -97,8 +93,6 @@ export const DoubleSearchInput = ({ titleProps, locationProps }) => (
                             <GoogleImage />
                         </PoweredByGoogle>
                     </SugesstionWrapper>
-                ) : (
-                    <div />
                 )}
             </InputContainer>
         </Row>

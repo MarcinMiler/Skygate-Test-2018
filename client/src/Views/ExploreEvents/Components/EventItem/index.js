@@ -12,11 +12,11 @@ import {
 } from './style'
 
 const EventItem = ({
-    event: { id, title, description, startDate, category },
+    event: { id, title, description, startDate, category, photo },
     history
 }) => (
     <EventItemWrapper onClick={() => history.push('/event/' + id)}>
-        <EventImage />
+        <EventImage src={photo} />
 
         <EventContent>
             <EventTitle>{title}</EventTitle>

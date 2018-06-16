@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Title from '../../../../Components/Title'
+import Subtitle from '../../../../Components/Subtitle'
 import CountDown from '../CountDown'
 import {
     EventDetailsWrapper,
@@ -9,9 +10,11 @@ import {
     EventDescription
 } from './style'
 
-const EventDetails = ({ event: { title, description, startDate } }) => (
+const EventDetails = ({
+    event: { title, description, organizer, category, startDate, photo }
+}) => (
     <EventDetailsWrapper>
-        <EventImage />
+        <EventImage style={{ backgroundImage: `url(${photo})` }} />
 
         <CountDown date={startDate} />
 
@@ -19,6 +22,14 @@ const EventDetails = ({ event: { title, description, startDate } }) => (
             <Title left>{title}</Title>
 
             <EventDescription>{description}</EventDescription>
+
+            <Subtitle left>Organizer</Subtitle>
+
+            <EventDescription>{organizer}</EventDescription>
+
+            <Subtitle left>Category</Subtitle>
+
+            <EventDescription>{category}</EventDescription>
         </EventContent>
     </EventDetailsWrapper>
 )

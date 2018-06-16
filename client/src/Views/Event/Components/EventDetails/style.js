@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import BackgroundImage from '../../../../Images/event.jpeg'
-
 export const EventDetailsWrapper = styled.div`
     width: 100%;
     margin-top: 150px;
@@ -11,10 +9,10 @@ export const EventDetailsWrapper = styled.div`
 `
 export const EventImage = styled.div`
     width: 100%;
-    height: 400px;
+    height: 500px;
     border-radius: 4px;
-    background: url(${BackgroundImage});
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center;
 `
 export const EventContent = styled.div`

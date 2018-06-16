@@ -55,7 +55,6 @@ class AddEventFormContainer extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <GoogleAutocomplete
                 location={this.state.location}

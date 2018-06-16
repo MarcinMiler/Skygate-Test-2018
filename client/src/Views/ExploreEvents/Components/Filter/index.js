@@ -10,13 +10,14 @@ const options = ['All', 'Music', 'Networking', 'Food', 'Sport', 'Parties']
 
 const Filter = ({ changeState }) => (
     <SearchContext.Consumer>
-        {({ changeState }) => (
+        {({ changeState, category }) => (
             <FilterWrapper>
                 <Subtitle left>Filtring</Subtitle>
 
                 <Dropdown
                     name="Categories"
                     options={options}
+                    value={category}
                     onChange={val => changeState('category', val)}
                 />
 

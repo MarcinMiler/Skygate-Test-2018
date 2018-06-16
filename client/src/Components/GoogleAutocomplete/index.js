@@ -46,20 +46,13 @@ class GoogleAutocomplete extends Component {
     clearSuggestions = () => this.setState(() => ({ suggestions: null }))
 
     handleInputChange = value => {
-        if (value === '') {
-            this.clearSuggestions()
-            this.props.onChange('')
-        }
+        value === '' && this.clearSuggestions()
 
         this.props.onChange(value)
         this.debounce()
     }
 
-    handleInputOnBlur = () => {
-        if (!this.mouseOnSuggestion) {
-            this.clearSuggestions()
-        }
-    }
+    handleInputOnBlur = () => !this.mouseOnSuggestion && this.clearSuggestions()
 
     suggestionClick = suggestion => {
         this.props.onSuggestionClick(suggestion)

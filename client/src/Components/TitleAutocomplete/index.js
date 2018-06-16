@@ -29,9 +29,8 @@ class TitleAutocomplete extends Component {
     }
 
     handleInputChange = value => {
-        if (value === '') {
-            this.clearSuggetions()
-        }
+        value === '' && this.clearSuggetions()
+
         this.props.changeTitle(value)
         this.debounce()
     }
@@ -43,7 +42,8 @@ class TitleAutocomplete extends Component {
     clearSuggetions = () => this.setState(() => ({ suggestions: null }))
 
     suggestionClick = suggestion => {
-        this.props.changeTitle(suggestion.title)
+        this.props.onSuggestionClick(suggestion)
+
         this.clearSuggetions()
     }
 
