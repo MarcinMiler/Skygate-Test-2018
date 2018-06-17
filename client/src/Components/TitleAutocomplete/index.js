@@ -9,7 +9,7 @@ class TitleAutocomplete extends Component {
     }
 
     componentDidMount() {
-        this.debounce = debounce(this.fetchPredictions, 500)
+        this.debounce = debounce(this.fetchPredictions, 300)
     }
 
     fetchPredictions = async () => {

@@ -2,51 +2,47 @@
     {
         "name": "development",
         "type": "postgres",
-        "host": "localhost",
+        "host": "ec2-54-75-227-92.eu-west-1.compute.amazonaws.com",
         "port": 5432,
-        "username": "marcin",
-        "password": "marcin",
-        "database": "event",
+        "username": "owktkviojuvjpg",
+        "password":
+            "7a74bc812c826a0cd00b36eebee823505fff433668a4d2ce9ed91224bb5deccb",
+        "database": "dfhqh48jlobc3s",
         "synchronize": true,
         "logging": false,
-        "entities": [
-            "src/entity/**/*.ts"
-        ],
-        "migrations": [
-            "src/migration/**/*.ts"
-        ],
-        "subscribers": [
-            "src/subscriber/**/*.ts"
-        ],
+        "entities": ["src/entity/**/*.ts"],
+        "migrations": ["src/migration/**/*.ts"],
+        "subscribers": ["src/subscriber/**/*.ts"],
         "cli": {
             "entitiesDir": "src/entity",
             "migrationsDir": "src/migration",
             "subscribersDir": "src/subscriber"
+        },
+        "extra": {
+            "ssl": true
         }
     },
     {
         "name": "test",
         "type": "postgres",
-        "host": "localhost",
+        "host": "ec2-54-75-227-92.eu-west-1.compute.amazonaws.com",
         "port": 5432,
-        "username": "marcin",
-        "password": "marcin",
-        "database": "event-test",
+        "username": "zrokyedncmzlau",
+        "password":
+            "ab82d0fa90d733d993b9db3a268ad9944ed400ba7088b0afdf2a3633bf06bf94",
+        "database": "d11flp4pp2mrln",
         "synchronize": true,
         "logging": false,
-        "entities": [
-            "src/entity/**/*.ts"
-        ],
-        "migrations": [
-            "src/migration/**/*.ts"
-        ],
-        "subscribers": [
-            "src/subscriber/**/*.ts"
-        ],
+        "entities": ["src/entity/**/*.ts"],
+        "migrations": ["src/migration/**/*.ts"],
+        "subscribers": ["src/subscriber/**/*.ts"],
         "cli": {
             "entitiesDir": "src/entity",
             "migrationsDir": "src/migration",
             "subscribersDir": "src/subscriber"
+        },
+        "extra": {
+            "ssl": true
         }
     }
 ]

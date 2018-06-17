@@ -18,7 +18,7 @@ class GoogleAutocomplete extends Component {
 
     componentDidMount() {
         this.autoComplete = new window.google.maps.places.AutocompleteService()
-        this.debounce = debounce(this.fetchPredictions, 500)
+        this.debounce = debounce(this.fetchPredictions, 300)
     }
 
     fetchPredictions = () => {
