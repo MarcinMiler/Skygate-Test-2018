@@ -1,5 +1,9 @@
 ## Test assignment for 2018 Summer JavaScript Internship - Skygate
 
+### Link to demo
+
+[https://marcinmiler.netlify.com/](https://marcinmiler.netlify.com/)
+
 ### Core functionality
 
 -   [x] Add event
@@ -79,6 +83,8 @@ export const client = new ApolloClient({
 ```
 
 ## Tests (tests are only on server)
+
+To run test you need to change database connection config in ormconfig.json
 
 ```
 cd Test/server && yarn test
