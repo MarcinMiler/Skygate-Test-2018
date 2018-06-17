@@ -4,7 +4,6 @@ import Container from '../../Components/Container'
 import Subtitle from '../../Components/Subtitle'
 import Banner from './Components/Banner'
 import Search from './Components/Search'
-import Cards from './Components/Cards'
 import Categories from './Components/Categories'
 
 const Home = () => (
@@ -13,10 +12,6 @@ const Home = () => (
 
         <Container>
             <Search />
-
-            <Subtitle>Popular events in Gliwice</Subtitle>
-
-            <Cards />
 
             <Subtitle>Browse by categories</Subtitle>
 

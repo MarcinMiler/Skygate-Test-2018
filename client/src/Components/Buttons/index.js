@@ -19,4 +19,9 @@ export const PrimaryButton = styled.div.attrs({
     font-size: 18px;
     cursor: pointer;
     user-select: none;
+    transition: all 200ms ease;
+
+    &:hover {
+        background-color: #d8004c;
+    }
 `

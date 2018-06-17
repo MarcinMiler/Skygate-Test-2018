@@ -12,9 +12,7 @@ const UpdateEventForm = ({
     updateEvent,
     changeState,
     state,
-    suggestions,
-    getSearchInputProps,
-    getSuggestionItemProps
+    locationProps
 }) => (
     <UpdateEventFormWrapper>
         <InputWithLabel
@@ -74,12 +72,7 @@ const UpdateEventForm = ({
             />
         </InputRow>
 
-        <SingleSearchInput
-            label="Localization"
-            suggestions={suggestions}
-            getSearchInputProps={getSearchInputProps}
-            getSuggestionItemProps={getSuggestionItemProps}
-        />
+        <SingleSearchInput label="Localization" locationProps={locationProps} />
 
         <InputWithLabel
             label="Photo (url)"
