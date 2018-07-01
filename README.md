@@ -33,13 +33,13 @@
 1.  Download project from github
 
 ```
-git clone https://github.com/MarcinMiler/Test.git
+git clone https://github.com/MarcinMiler/Skygate-Test-2018.git
 ```
 
 2.  Navigate to the client folder
 
 ```
-cd Test/client
+cd Skygate-Test-2018/client
 ```
 
 3.  Install dependencies
@@ -57,7 +57,7 @@ yarn start
 4.  Open another terminal and navigate to the server folder
 
 ```
-cd Test/server
+cd Skygate-Test-2018/server
 ```
 
 5.  Install dependencies
